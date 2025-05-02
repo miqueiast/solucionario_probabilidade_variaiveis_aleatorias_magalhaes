@@ -1,0 +1,1 @@
+# solucionario_probabilidade_variaiveis_aleatorias_magalhaes
