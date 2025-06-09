@@ -230,104 +230,104 @@ $f(X) = f(x, \theta) = S(x)h(\theta)e^{c(\theta)T(x)}$, $\forall x \in D$, onde 
 
 ## Exercícios da Seção 3.2
 
-**1. Discuta a validade do modelo Uniforme Discreto nos seguintes casos:**
-**a.** O número sorteado numa rifa com 100 números.
-**b.** A escolha de um aluno que vai representar a classe junto à direção da escola.
-**c.** O dia da semana em que ocorrem mais acidentes de trabalho numa indústria.
-**d.** O mês do ano com maior número de enchentes na cidade de São Paulo.
+1. Discuta a validade do modelo Uniforme Discreto nos seguintes casos:
+a. O número sorteado numa rifa com 100 números.
+b. A escolha de um aluno que vai representar a classe junto à direção da escola.
+c. O dia da semana em que ocorrem mais acidentes de trabalho numa indústria.
+d. O mês do ano com maior número de enchentes na cidade de São Paulo.
 
-**2. Sendo X uma variável seguindo o modelo Uniforme Discreto, com valores no conjunto {1, 2, 3, ..., 10}, pergunta-se:**
-**a.** \( P(X \ge 7) \)
-**b.** \( P(3 < X \le 7) \)
-**c.** \( P(X < 2 \text{ ou } X \ge 8) \)
-**d.** \( P(X \ge 5 \text{ ou } X > 8) \)
-**e.** \( P(X > 3 \text{ e } X < 6) \)
-**f.** \( P(X \le 9 | X \ge 6) \)
+2. Sendo X uma variável seguindo o modelo Uniforme Discreto, com valores no conjunto {1, 2, 3, ..., 10}, pergunta-se:
+a. \( P(X \ge 7) \)
+b. \( P(3 < X \le 7) \)
+c. \( P(X < 2 \text{ ou } X \ge 8) \)
+d. \( P(X \ge 5 \text{ ou } X > 8) \)
+e. \( P(X > 3 \text{ e } X < 6) \)
+f. \( P(X \le 9 | X \ge 6) \)
 
-**3. Um usuário de transporte coletivo chega pontualmente às 8 horas para pegar o seu ônibus. Devido ao trânsito caótico, a demora pode ser qualquer tempo entre 1 e 20 minutos (admita que o relógio "pule" de minuto em minuto). Pergunta-se:**
-**a.** Qual a probabilidade de demorar mais de 10 minutos?
-**b.** Qual a probabilidade de demorar pelo menos 5 mas não mais de 10 minutos?
-**c.** Qual a probabilidade de a demora não chegar a 5 minutos?
-**d.** Se um amigo chegou 10 minutos atrasado e vai pegar o mesmo ônibus (que ainda não passou), qual a probabilidade de o amigo atrasado esperar até 3 minutos?
+3. Um usuário de transporte coletivo chega pontualmente às 8 horas para pegar o seu ônibus. Devido ao trânsito caótico, a demora pode ser qualquer tempo entre 1 e 20 minutos (admita que o relógio "pule" de minuto em minuto). Pergunta-se:
+a. Qual a probabilidade de demorar mais de 10 minutos?
+b. Qual a probabilidade de demorar pelo menos 5 mas não mais de 10 minutos?
+c. Qual a probabilidade de a demora não chegar a 5 minutos?
+d. Se um amigo chegou 10 minutos atrasado e vai pegar o mesmo ônibus (que ainda não passou), qual a probabilidade de o amigo atrasado esperar até 3 minutos?
 
-**4. Discuta a validade do modelo Binomial nos seguintes casos:**
-**a.** Dos alunos de uma grande universidade, sorteamos 5 e contamos quantos se declaram usuários de drogas.
-**b.** Escolhemos 20 lâmpadas ao acaso na prateleira de um supermercado, sendo 10 de uma fábrica e 10 de outra. Contamos o número total de defeituosas.
-**c.** Quinze automóveis 0 km de uma mesma marca e tipo são submetidos a um teste antipoluição e contamos o número deles que passaram no teste.
-**d.** Um motorista é submetido a um teste em que deve estacionar seu veículo num pequeno espaço (isto é popularmente chamado de *fazer baliza*). Em 10 tentativas, contamos o número de vezes em que o motorista estacionou corretamente.
+4. Discuta a validade do modelo Binomial nos seguintes casos:
+a. Dos alunos de uma grande universidade, sorteamos 5 e contamos quantos se declaram usuários de drogas.
+b. Escolhemos 20 lâmpadas ao acaso na prateleira de um supermercado, sendo 10 de uma fábrica e 10 de outra. Contamos o número total de defeituosas.
+c. Quinze automóveis 0 km de uma mesma marca e tipo são submetidos a um teste antipoluição e contamos o número deles que passaram no teste.
+d. Um motorista é submetido a um teste em que deve estacionar seu veículo num pequeno espaço (isto é popularmente chamado de *fazer baliza*). Em 10 tentativas, contamos o número de vezes em que o motorista estacionou corretamente.
 
-**5. Sendo X uma variável seguindo o modelo Binomial com parâmetros \(n = 15\) e \(p = 0,4\); pergunta-se:**
-**a.** \( P(X \ge 14) \)
-**b.** \( P(8 < X \le 10) \)
-**c.** \( P(X < 2 \text{ ou } X \ge 11) \)
-**d.** \( P(X \ge 11 \text{ ou } X > 13) \)
-**e.** \( P(X > 3 \text{ e } X < 6) \)
-**f.** \( P(X \le 13 | X \ge 11) \)
+5. Sendo X uma variável seguindo o modelo Binomial com parâmetros \(n = 15\) e \(p = 0,4\); pergunta-se:
+a. \( P(X \ge 14) \)
+b. \( P(8 < X \le 10) \)
+c. \( P(X < 2 \text{ ou } X \ge 11) \)
+d. \( P(X \ge 11 \text{ ou } X > 13) \)
+e. \( P(X > 3 \text{ e } X < 6) \)
+f. \( P(X \le 13 | X \ge 11) \)
 
-**6. Uma certa doença pode ser curada através de procedimento cirúrgico em 80% dos casos. Dentre os que têm essa doença, sorteamos 15 pacientes que serão submetidos à cirurgia. Fazendo alguma suposição adicional que julgar necessária, responda qual é a probabilidade de:**
-**a.** Todos serem curados?
-**b.** Pelo menos dois não serem curados?
-**c.** Ao menos 10 ficarem livres da doença?
+6. Uma certa doença pode ser curada através de procedimento cirúrgico em 80% dos casos. Dentre os que têm essa doença, sorteamos 15 pacientes que serão submetidos à cirurgia. Fazendo alguma suposição adicional que julgar necessária, responda qual é a probabilidade de:
+a. Todos serem curados?
+b. Pelo menos dois não serem curados?
+c. Ao menos 10 ficarem livres da doença?
 
-**7. Calcule a função de distribuição da variável X nos casos:**
-**a.** X é Bernoulli com \(p = 0,6\).
-**b.** \( X \sim b(4; 0,20) \)
-**c.** \( X \sim b(8; 0,10) \)
+7. Calcule a função de distribuição da variável X nos casos:
+a. X é Bernoulli com \(p = 0,6\).
+b. \( X \sim b(4; 0,20) \)
+c. \( X \sim b(8; 0,10) \)
 
 ## Exercícios da Seção 3.3
 
-**1. Sendo \( X \sim G(0,4) \), calcule:**
-**a.** \( P(X = 3) \)
-**b.** \( P(2 \le X < 4) \)
-**c.** \( P(X > 1 | X \le 2) \)
-**d.** \( P(X \ge 1) \)
+1. Sendo \( X \sim G(0,4) \), calcule:
+a. \( P(X = 3) \)
+b. \( P(2 \le X < 4) \)
+c. \( P(X > 1 | X \le 2) \)
+d. \( P(X \ge 1) \)
 
-**2. Uma moeda equilibrada é lançada sucessivamente, de modo independente, até que ocorra a primeira cara. Seja X a variável aleatória que conta o número de lançamentos anteriores à ocorrência de cara. Determine:**
-**a.** \( P(X \le 2) \)
-**b.** \( P(X > 1) \)
-**c.** \( P(3 < X < 5) \)
-**d.** Quantas vezes deve, no mínimo, ser lançada a moeda para garantir a ocorrência de cara com pelo menos 0,8 de probabilidade.
+2. Uma moeda equilibrada é lançada sucessivamente, de modo independente, até que ocorra a primeira cara. Seja X a variável aleatória que conta o número de lançamentos anteriores à ocorrência de cara. Determine:
+a. \( P(X \le 2) \)
+b. \( P(X > 1) \)
+c. \( P(3 < X < 5) \)
+d. Quantas vezes deve, no mínimo, ser lançada a moeda para garantir a ocorrência de cara com pelo menos 0,8 de probabilidade.
 
-**3. A variável aleatória Y tem densidade Poisson com parâmetro \( \lambda = 2 \). Obtenha:**
-**a.** \( P(Y < 2) \)
-**b.** \( P(2 \le Y < 4) \)
-**c.** \( P(Y > 0) \)
-**d.** \( P(Y = 1 | Y < 3) \)
+3. A variável aleatória Y tem densidade Poisson com parâmetro \( \lambda = 2 \). Obtenha:
+a. \( P(Y < 2) \)
+b. \( P(2 \le Y < 4) \)
+c. \( P(Y > 0) \)
+d. \( P(Y = 1 | Y < 3) \)
 
-**4. A aplicação de fundo anticorrosivo em chapas de aço de 1 m² é feita mecanicamente e pode produzir defeitos (pequenas bolhas na pintura), de acordo com uma variável aleatória Poisson de parâmetro \( \lambda = 1 \) por m². Uma chapa é sorteada ao acaso para ser inspecionada, pergunta-se a probabilidade de:**
-**a.** Encontrarmos pelo menos 1 defeito.
-**b.** No máximo 2 defeitos serem encontrados.
-**c.** Encontrarmos de 2 a 4 defeitos.
-**d.** Não mais de 1 defeito ser encontrado.
+4. A aplicação de fundo anticorrosivo em chapas de aço de 1 m² é feita mecanicamente e pode produzir defeitos (pequenas bolhas na pintura), de acordo com uma variável aleatória Poisson de parâmetro \( \lambda = 1 \) por m². Uma chapa é sorteada ao acaso para ser inspecionada, pergunta-se a probabilidade de:
+a. Encontrarmos pelo menos 1 defeito.
+b. No máximo 2 defeitos serem encontrados.
+c. Encontrarmos de 2 a 4 defeitos.
+d. Não mais de 1 defeito ser encontrado.
 
-**5. A variável H segue o modelo Hipergeométrico com parâmetros \(n=10, m=5\) e \(r=4\). Determine:**
-**a.** \( P(H = 2) \)
-**b.** \( P(H \le 1) \)
-**c.** \( P(H > 0) \)
+5. A variável H segue o modelo Hipergeométrico com parâmetros \(n=10, m=5\) e \(r=4\). Determine:
+a. \( P(H = 2) \)
+b. \( P(H \le 1) \)
+c. \( P(H > 0) \)
 
-**6. Por engano 3 peças defeituosas foram misturadas com boas formando um lote com 12 peças no total. Escolhendo ao acaso 4 dessas peças, determine a probabilidade de encontrar:**
-**a.** Pelo menos 2 defeituosas.
-**b.** No máximo 1 defeituosa.
-**c.** No mínimo 1 boa.
+6. Por engano 3 peças defeituosas foram misturadas com boas formando um lote com 12 peças no total. Escolhendo ao acaso 4 dessas peças, determine a probabilidade de encontrar:
+a. Pelo menos 2 defeituosas.
+b. No máximo 1 defeituosa.
+c. No mínimo 1 boa.
 
 ## 3.4 Exercícios
 
-**1. Um agricultor cultiva laranjas e também produz mudas para vender. Após alguns meses a muda pode ser atacada por fungos com probabilidade 0,05 e, nesse caso, ela é escolhida para ser recuperada com probabilidade 0,5. Admita que o processo de recuperação é infalível. O custo de cada muda produzida é R$ 1,00; acrescido de mais R$ 0,50 se precisar ser recuperada. Cada muda é vendida a R$ 3,00 e são descartadas as mudas não recuperadas de ataque de fungos. Estude como se comporta o ganho por muda produzida.**
+1. Um agricultor cultiva laranjas e também produz mudas para vender. Após alguns meses a muda pode ser atacada por fungos com probabilidade 0,05 e, nesse caso, ela é escolhida para ser recuperada com probabilidade 0,5. Admita que o processo de recuperação é infalível. O custo de cada muda produzida é R$ 1,00; acrescido de mais R$ 0,50 se precisar ser recuperada. Cada muda é vendida a R$ 3,00 e são descartadas as mudas não recuperadas de ataque de fungos. Estude como se comporta o ganho por muda produzida.
 
-**2. Uma agência de turismo apresenta aos clientes o orçamento de uma certa viagem em duas partes. A primeira é o transporte aéreo que têm três opções com preços 3; 3,5 e 4 mil reais e preferências de escolha de 0,5; 0,3 e 0,2 para as companhias TWA, TWB e TWC, respectivamente. A segunda parte do orçamento é a escolha de estada. Existem quatro opções de hotéis que custam 2; 2,5; 3 e 3,5 mil reais e são escolhidos pelos clientes com a mesma preferência, independentemente da companhia aérea. Seja X a variável aleatória orçamento da viagem. Calcule a função de probabilidade e a função de distribuição da variável X.**
+2. Uma agência de turismo apresenta aos clientes o orçamento de uma certa viagem em duas partes. A primeira é o transporte aéreo que têm três opções com preços 3; 3,5 e 4 mil reais e preferências de escolha de 0,5; 0,3 e 0,2 para as companhias TWA, TWB e TWC, respectivamente. A segunda parte do orçamento é a escolha de estada. Existem quatro opções de hotéis que custam 2; 2,5; 3 e 3,5 mil reais e são escolhidos pelos clientes com a mesma preferência, independentemente da companhia aérea. Seja X a variável aleatória orçamento da viagem. Calcule a função de probabilidade e a função de distribuição da variável X.
 
-**3. Um equipamento consiste de duas peças A e B que têm 0,10 e 0,15 de probabilidade de serem de qualidade inferior. Um operário escolhe ao acaso uma peça tipo A e uma tipo B para construir o equipamento. Na passagem pelo controle de qualidade o equipamento vai ser classificado. Será considerado como nível I, se as peças A e B forem de qualidade inferior. Será nível II, se uma delas for de qualidade inferior e, nível III, no outro caso. O lucro na venda é de R$10, R$20 ou R$30 para os níveis I, II ou III, respectivamente. Como se comporta a variável lucro? Para dois equipamentos vendidos, obtenha a função de probabilidade do lucro. Nesse caso, qual seria a probabilidade de pelo menos R$30 de lucro?**
+3. Um equipamento consiste de duas peças A e B que têm 0,10 e 0,15 de probabilidade de serem de qualidade inferior. Um operário escolhe ao acaso uma peça tipo A e uma tipo B para construir o equipamento. Na passagem pelo controle de qualidade o equipamento vai ser classificado. Será considerado como nível I, se as peças A e B forem de qualidade inferior. Será nível II, se uma delas for de qualidade inferior e, nível III, no outro caso. O lucro na venda é de R$10, R$20 ou R$30 para os níveis I, II ou III, respectivamente. Como se comporta a variável lucro? Para dois equipamentos vendidos, obtenha a função de probabilidade do lucro. Nesse caso, qual seria a probabilidade de pelo menos R$30 de lucro?
 
-**4. Na verificação de máquinas, observam-se as partes elétrica, mecânica e estrutural. A probabilidade de aparecer uma falha em cada uma das partes é 0,01; independente das demais. Ocorrendo falha, o tempo de conserto é 10, 20 ou 50 minutos para falha elétrica, mecânica ou estrutural, respectivamente. Se a falha elétrica aparece junto com a falha mecânica, teremos ainda um acréscimo de 20 minutos. Para uma máquina escolhida ao acaso, qual a probabilidade do tempo de interrupção (se não há falha, esse tempo é zero):**
-**a.** Durar menos de 25 minutos?
-**b.** Ultrapassar 40 minutos?
+4. Na verificação de máquinas, observam-se as partes elétrica, mecânica e estrutural. A probabilidade de aparecer uma falha em cada uma das partes é 0,01; independente das demais. Ocorrendo falha, o tempo de conserto é 10, 20 ou 50 minutos para falha elétrica, mecânica ou estrutural, respectivamente. Se a falha elétrica aparece junto com a falha mecânica, teremos ainda um acréscimo de 20 minutos. Para uma máquina escolhida ao acaso, qual a probabilidade do tempo de interrupção (se não há falha, esse tempo é zero):
+a. Durar menos de 25 minutos?
+b. Ultrapassar 40 minutos?
 
-**5. Uma empresa paga a seus estagiários de engenharia de acordo com o ano de curso do estudante. Para se obter o salário mensal pago por 30 horas semanais, multiplica-se o salário mínimo pelo ano de curso do estagiário. Dessa forma, o estudante do primeiro ano ganha um salário mínimo, o do segundo recebe dois e assim por diante até o quinto ano. A empresa vai empregar 2 novos estagiários e admitimos que todos os anos têm igual número de estudantes interessados no estágio (considere a população de candidatos muito grande de modo a não haver diferença entre escolher com ou sem reposição). Pergunta-se a probabilidade de:**
-**a.** Os dois serem do primeiro ano?
-**b.** A empresa gastar no máximo 3 salários mínimos com os estagiários?
-**c.** Sabendo que gastou pelo menos 4, gastar menos de 7 salários mínimos?
+5. Uma empresa paga a seus estagiários de engenharia de acordo com o ano de curso do estudante. Para se obter o salário mensal pago por 30 horas semanais, multiplica-se o salário mínimo pelo ano de curso do estagiário. Dessa forma, o estudante do primeiro ano ganha um salário mínimo, o do segundo recebe dois e assim por diante até o quinto ano. A empresa vai empregar 2 novos estagiários e admitimos que todos os anos têm igual número de estudantes interessados no estágio (considere a população de candidatos muito grande de modo a não haver diferença entre escolher com ou sem reposição). Pergunta-se a probabilidade de:
+a. Os dois serem do primeiro ano?
+b. A empresa gastar no máximo 3 salários mínimos com os estagiários?
+c. Sabendo que gastou pelo menos 4, gastar menos de 7 salários mínimos?
 
-**6. Uma variável aleatória X tem a seguinte função de distribuição:**
+6. Uma variável aleatória X tem a seguinte função de distribuição:
 \[ F(x) = 
 \begin{cases} 
 0 & \text{se } x < -1; \\
@@ -338,18 +338,18 @@ $f(X) = f(x, \theta) = S(x)h(\theta)e^{c(\theta)T(x)}$, $\forall x \in D$, onde 
 1 & \text{se } x \ge 15.
 \end{cases}
 \]
-**Determine:**
-**a.** A função de probabilidade de X.
-**b.** \( P(X \le -2) \)
-**c.** \( P(X < 2) \)
-**d.** \( P(3 \le X < 12) \)
-**e.** \( P(X > 14) \)
+Determine:
+a. A função de probabilidade de X.
+b. \( P(X \le -2) \)
+c. \( P(X < 2) \)
+d. \( P(3 \le X < 12) \)
+e. \( P(X > 14) \)
 
-**7. Estatísticas de acidentes, num trecho da rodovia SP330, indicam probabilidade de 0,05 de haver um acidente durante a madrugada (24 às 6 horas). Em ocorrendo um acidente nesse período, a chance de gerar vítimas é de 0,5. Ainda considerando o período acima, se acontece um acidente com vítima, ela será fatal com probabilidade 0,1. O serviço de ajuda aos usuários utiliza 2 veículos na inspeção do tráfego naquela área. A esse número, acrescentamos mais 2 se houver acidente. Se o acidente tem vítimas, acrescente aos anteriores mais 2 veículos e, finalmente, acrescente mais 1 se a vítima for fatal. Encontre a função de probabilidade da variável aleatória número de veículos em serviço de auxílio nessa estrada durante a madrugada.**
+7. Estatísticas de acidentes, num trecho da rodovia SP330, indicam probabilidade de 0,05 de haver um acidente durante a madrugada (24 às 6 horas). Em ocorrendo um acidente nesse período, a chance de gerar vítimas é de 0,5. Ainda considerando o período acima, se acontece um acidente com vítima, ela será fatal com probabilidade 0,1. O serviço de ajuda aos usuários utiliza 2 veículos na inspeção do tráfego naquela área. A esse número, acrescentamos mais 2 se houver acidente. Se o acidente tem vítimas, acrescente aos anteriores mais 2 veículos e, finalmente, acrescente mais 1 se a vítima for fatal. Encontre a função de probabilidade da variável aleatória número de veículos em serviço de auxílio nessa estrada durante a madrugada.
 
-**8. Em treinamento de animais, usa-se a repetição como estratégia de aprendizagem. Num experimento, um macaco realiza certa tarefa corretamente, pela primeira vez, com probabilidade 0,5. Caso falhe, a probabilidade de realizar corretamente na segunda tentativa cresce 10%, ou seja, a probabilidade é agora 0,55 e assim sucessivamente. Admita que o experimento termina em quatro tentativas ou antes, na primeira vez que o macaco acertar. Descreva o comportamento probabilístico do número de tentativas.**
+8. Em treinamento de animais, usa-se a repetição como estratégia de aprendizagem. Num experimento, um macaco realiza certa tarefa corretamente, pela primeira vez, com probabilidade 0,5. Caso falhe, a probabilidade de realizar corretamente na segunda tentativa cresce 10%, ou seja, a probabilidade é agora 0,55 e assim sucessivamente. Admita que o experimento termina em quatro tentativas ou antes, na primeira vez que o macaco acertar. Descreva o comportamento probabilístico do número de tentativas.
 
-**9. Num certo restaurante, paga-se pelo almoço uma quantia fixa dependendo da escolha feita de prato e bebida. A carne de peixe tem 10% de preferência, enquanto frango tem 40% e carne bovina 50%. As três escolhas de bebida estão condicionadas à opção do prato, segundo a tabela abaixo:**
+9. Num certo restaurante, paga-se pelo almoço uma quantia fixa dependendo da escolha feita de prato e bebida. A carne de peixe tem 10% de preferência, enquanto frango tem 40% e carne bovina 50%. As três escolhas de bebida estão condicionadas à opção do prato, segundo a tabela abaixo:
 
 | Opção: Peixe | Cerveja | Água | Vinho |
 | :--- | :---: | :---: | :---: |
@@ -363,27 +363,27 @@ $f(X) = f(x, \theta) = S(x)h(\theta)e^{c(\theta)T(x)}$, $\forall x \in D$, onde 
 | :--- | :---: | :---: | :---: |
 | \(P(\text{Bebida | Bovina})\) | 0,6 | 0,3 | 0,1 |
 
-**Admita os seguintes preços:**
+Admita os seguintes preços:
 
 | Pedido | Peixe | Frango | Bovina | Cerveja | Água | Vinho |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | Preço | 12 | 15 | 18 | 6 | 3 | 9 |
 
-**a.** Dado que alguém escolhe peixe, qual a probabilidade de que escolha cerveja?
-**b.** Se escolhe carne bovina, qual a probabilidade de tomar vinho?
-**c.** Sabendo que tomou água, qual a probabilidade de ter escolhido frango?
-**d.** Determine a função de probabilidade para cada uma das variáveis X: preço do almoço e Y: preço do almoço para aqueles que preferem cerveja.
+a. Dado que alguém escolhe peixe, qual a probabilidade de que escolha cerveja?
+b. Se escolhe carne bovina, qual a probabilidade de tomar vinho?
+c. Sabendo que tomou água, qual a probabilidade de ter escolhido frango?
+d. Determine a função de probabilidade para cada uma das variáveis X: preço do almoço e Y: preço do almoço para aqueles que preferem cerveja.
 
-**10. Supondo igualdade de probabilidade entre nascimentos de cada sexo, para uma família com três filhos, calcule a probabilidade de que:**
-**a.** Exatamente dois sejam do sexo masculino.
-**b.** Pelo menos um deles ser do sexo masculino.
-**c.** Todos serem do sexo feminino.
+10. Supondo igualdade de probabilidade entre nascimentos de cada sexo, para uma família com três filhos, calcule a probabilidade de que:
+a. Exatamente dois sejam do sexo masculino.
+b. Pelo menos um deles ser do sexo masculino.
+c. Todos serem do sexo feminino.
 
-**11. Um time paulista de futebol tem probabilidade 0,92 de vitória sempre que joga. Se o time atuar 4 vezes, determine a probabilidade de que vença:**
-**a.** Todas as 4 partidas.
-**b.** Exatamente 2 partidas.
-**c.** Pelo menos uma partida.
-**d.** No máximo 3 partidas.
-**e.** Mais da metade das partidas.
+11. Um time paulista de futebol tem probabilidade 0,92 de vitória sempre que joga. Se o time atuar 4 vezes, determine a probabilidade de que vença:
+a. Todas as 4 partidas.
+b. Exatamente 2 partidas.
+c. Pelo menos uma partida.
+d. No máximo 3 partidas.
+e. Mais da metade das partidas.
 
-**12. Um certo equipamento é expedido em lotes de 500 unidades. Antes que uma remessa seja aprovada, um inspetor escolhe 5 desses equipamentos e os inspeciona. Se nenhum dos equipamentos inspecionados for defeituoso, o lote é aprovado. Se um ou mais equipamentos forem defeituosos, todos as unidades são inspecionadas. Suponha que existam, de fato, dez equipamentos defeituosos no lote. Utilizando uma suposição conveniente, qual é a probabilidade de que seja necessário testar todos os equipamentos?**
+12. Um certo equipamento é expedido em lotes de 500 unidades. Antes que uma remessa seja aprovada, um inspetor escolhe 5 desses equipamentos e os inspeciona. Se nenhum dos equipamentos inspecionados for defeituoso, o lote é aprovado. Se um ou mais equipamentos forem defeituosos, todos as unidades são inspecionadas. Suponha que existam, de fato, dez equipamentos defeituosos no lote. Utilizando uma suposição conveniente, qual é a probabilidade de que seja necessário testar todos os equipamentos?
