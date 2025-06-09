@@ -1,0 +1,73 @@
+---
+title: "Capítulo 2"
+author: "Miqueias"
+format: pdf
+editor: visual
+---
+
+## Análise do Problema
+
+Este problema é resolvido em duas etapas, ambas utilizando a distribuição Binomial.
+
+### Parte (a): Proporção de Pacotes com Garantia
+
+Calculamos a probabilidade de um único pacote ter 2 ou mais parafusos defeituosos. Seja $X \sim Binomial(n=10, p=0.01)$. Queremos $P(X \ge 2)$.
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| label: "pacote_unico"
+#| anotação: "Cálculo para um único pacote em R"
+
+# Parâmetros para um pacote
+n_parafusos <- 10
+p_defeito <- 0.01
+
+# P(X >= 2) = 1 - [P(X=0) + P(X=1)]
+
+# Calcula P(X=0) e P(X=1) usando dbinom(x, size, prob)
+p_x0 <- dbinom(x = 0, size = n_parafusos, prob = p_defeito)
+p_x1 <- dbinom(x = 1, size = n_parafusos, prob = p_defeito)
+
+# Probabilidade de acionar a garantia
+p_garantia <- 1 - (p_x0 + p_x1)
+
+cat(sprintf("A probabilidade de um parafuso ser defeituoso (p) é: %.2f\n", p_defeito))
+cat(sprintf("P(X=0) = %.5f\n", p_x0))
+cat(sprintf("P(X=1) = %.5f\n", p_x1))
+cat(sprintf("A probabilidade de um pacote acionar a garantia, P(X >= 2), é: %.5f\n", p_garantia))
+cat(sprintf("Resposta (a): A proporção de pacotes a serem devolvidos é de %.3f%%.", p_garantia * 100))
+```
+
+---
+
+### Parte (b): Probabilidade de Devolução para um Cliente
+
+Agora, modelamos a probabilidade de um cliente que compra 10 pacotes ter que retornar. Seja $Y \sim Binomial(n'=10, p')$, onde $p'$ é a probabilidade calculada na parte (a). Queremos $P(Y \ge 1)$.
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| label: "cliente_pacotes"
+#| anotação: "Cálculo para um cliente com 10 pacotes em R"
+
+# Parâmetros para o cliente
+n_pacotes <- 10
+# A variável p_garantia foi calculada no bloco de código anterior
+p_pacote_com_garantia <- p_garantia 
+
+# P(Y >= 1) = 1 - P(Y=0)
+
+# Calcula P(Y=0) para a nova distribuição binomial
+p_y0 <- dbinom(x = 0, size = n_pacotes, prob = p_pacote_com_garantia)
+
+# Probabilidade final de o cliente ter que retornar
+p_retorno <- 1 - p_y0
+
+cat(sprintf("A probabilidade de um pacote precisar de garantia (p') é: %.5f\n", p_pacote_com_garantia))
+cat(sprintf("P(Y=0) = %.5f\n", p_y0))
+cat(sprintf("A probabilidade de o cliente ter que retornar, P(Y >= 1), é: %.5f\n", p_retorno))
+cat(sprintf("Resposta (b): A probabilidade do cliente retornar é de %.2f%%.", p_retorno * 100))
+```

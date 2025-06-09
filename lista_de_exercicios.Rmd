@@ -1,0 +1,224 @@
+---
+output: 
+  pdf_document:
+    keep_tex: true
+fontsize: 10pt
+geometry: "left=2cm, right=2cm, top=2.5cm, bottom=2.5cm"
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyhead[L]{Miqueias}
+  - \fancyhead[C]{Lista de Exercícios}
+  - \fancyhead[R]{\today}
+  - \fancyfoot[C]{\thepage}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Probabilidade: Um Curso Introdutório
+
+## 4.5 EXERCÍCIOS
+
+1. Sabe-se que os parafusos produzidos por uma certa companhia são defeituosos com probabilidade 0,01, independentemente uns dos outros (isto é, a fração não-conforme de parafusos na produção é 0,01). A companhia vende os parafusos em pacotes de dez unidades e oferece uma garantia de devolução do dinheiro caso existam dois ou mais parafusos defeituosos no pacote com dez parafusos. (a) Qual a proporção de pacotes vendidos para os quais a companhia deve efetuar devolução do dinheiro? (b) Supondo que o número de parafusos defeituosos num determinado pacote é independente dos demais pacotes, qual a probabilidade de que uma pessoa que compra dez pacotes de parafusos tenha que retornar à companhia para devolução do dinheiro?
+
+2. Suponha que o número de erros tipográficos em uma única página de um livro tem distribuição de Poisson com parâmetro \( \lambda = \frac{1}{2} \). (a) Calcule a probabilidade de existir exatamente dois erros tipográficos em uma página. (b) Calcule a probabilidade de que exista pelo menos um erro em uma página. (c) Suponha agora que o livro em questão possui 200 páginas. Qual a probabilidade de não existir erros tipográficos neste livro?
+
+3. Uma moeda, cuja probabilidade de cara em um lançamento é \( p, 0 < p < 1 \), é lançada indefinidamente até que ocorra uma seqüência de cinco caras (seguidas). Um estudante resolve modelar esse experimento definindo a variável aleatória \( X \) igual ao número de lançamentos da moeda até que ocorra a seqüência de cinco caras. Ele então reclama do seguinte modo: para \( k = 5 \), \( P(X = k) = p^k \), pois devemos ter cara nos cinco primeiros lançamentos. Para \( k = 6 \), \( P(X = k) = (1 - p)^p \), pois devemos ter coroa no primeiro lançamento e cara nos cinco lançamentos seguintes. Assim, concluiu que  
+\[P(X = k) =  
+\begin{cases}  
+0 & , k < 5, \\  
+(1 - p)^{k-5}p^k & , k \geq 5,  
+\end{cases}\]  
+e, portanto, \( X^* = X - 5 \) tem distribuição geométrica de parâmetro \( p^k \). Discuta a proposta do estudante abordando as características do modelo proposto e a validade da expressão \( P(X = k) \).
+
+4. Suponha que uma particular característica de uma pessoa (por exemplo, cor dos olhos) é determinada por um par de genes. Suponha ainda que \( D \) representa o gene dominante e \( R \) o gene recessivo, de tal forma que uma pessoa com genes \( DD \) é dominante pura, uma com \( RR \) é recessiva pura e uma com \( RD \) ou \( DR \) é híbrida, e que uma pessoa dominante pura e uma pessoa híbrida têm aparências semelhantes quanto a esta característica. Se ambos os membros de um casal são híbridos quanto a uma particular característica e se o casal possui quatro filhos, qual a probabilidade de que três das quatro crianças tenham fenótipo determinado pelo gene dominante? (Lembre-se que cada criança recebe um gene de cada um dos pais.)
+
+5. Suponha que a probabilidade de que um item produzido por uma máquina seja defeituoso é 0,1. Determine a probabilidade de que uma amostra de dez itens conterá no máximo um item defeituoso. Compare os resultados obtidos pelas distribuições binomial e Poisson.
+
+6. Com a finalidade de aumentar a arrecadação do seu sistema de loterias, a Caixa Econômica Federal implantou um novo jogo denominado Loto II, no qual o apostador escolhe seis dezenas do conjunto \((01, 02, \ldots, 50)\). Toda semana, a Caixa sorteia seis dezenas desse mesmo conjunto e atribui prémios aos acertadores da: (a) Sena – as seis dezenas sorteadas, (b) Quina – cinco das dezenas sorteadas, (c) Quadra – quatro das dezenas sorteadas. Determine a probabilidade de que uma pessoa que aposta na Loto II ganhe algum dos prémios oferecidos.
+
+7. Um apostador da Loto II (descrita no exercício 6) é acusado de conhecer previamente o resultado das dezenas sorteadas, uma vez que ganhou doze prémios da Loto II em um único ano, fato considerado extremamente raro. Construa um modelo probabilístico adequado ao problema e verifique a validade de tal acusação.
+
+8. Considere um experimento que consiste em contar o número de partículas alfa emitidas, num intervalo de tempo de um segundo, por um grama de material radioativo. Sabe-se por experiência passada que, em média, 3,2 de tais partículas são emitidas por segundo. Determine a probabilidade (aproximada) de que não mais que duas partículas alfa sejam emitidas.
+
+9. Um comprador adquire componentes eletrônicos em lotes de tamanho dez. Este comprador adota a seguinte postura: inspeciona três componentes aleatoriamente de um lote e o aceita apenas se todos os três componentes não forem defeituosos. Se 30% dos lotes têm quatro componentes defeituosos e 70% têm apenas um, qual a proporção de lotes que o comprador rejeita?
+
+10. Dois amigos, Paulo e Pedro, resolvem ir juntos a uma casa lotérica para apostar na Loto II. Paulo apostou nas dez últimas semanas, ao passo que Pedro nunca apostou na loteria em questão. Paulo argumenta que Pedro deve apostar nas mesmas dezenas que ele, pois julga que o fato de já ter participado do jogo algumas vezes e nunca ter ganho prêmio algum torna mais eminente sua vitória no próximo sorteio, relativamente a Pedro. Em outras palavras, Paulo argumenta que o fato de já ter apostado dez vezes na Loto II e nunca ter ganho prêmio algum aumenta a probabilidade de obter algum prêmio no próximo sorteio. Discuta a afirmação feita por Paulo propondo um modelo probabilístico para a situação descrita.
+
+11. Considere um júri constituído por dez jurados que adota a seguinte regra para determinar o veredito: se pelo menos oito dos jurados julgarem o réu culpado, este será condenado, caso contrário, o réu não será condenado. Suponha que cada jurado dá seu veredito independentemente dos demais e que cada um toma a decisão correta com probabilidade \( \theta \). Suponha ainda que o representa a probabilidade do réu ser culpado. Determine a probabilidade do júri tomar uma decisão correta.
+
+12. Um jornaleiro compra jornais a dez centavos e os vende a quinze centavos. Contudo, ele não pode devolver os jornais não vendidos. Se a demanda diária de jornais é uma variável aleatória binomial com \( n = 10 \) e \( p = \frac{1}{3} \), quantos jornais, aproximadamente, ele deve comprar de maneira a maximizar seu lucro esperado?
+
+13. Suponha que um motor de um avião falha, em vôo, com probabilidade \( 1 - p \), independentemente dos demais motores. Se um avião precisa de que a maioria dos seus motores funcione para realizar um vôo bem-sucedido, para que valores de \( p \) um avião com cinco motores é preferível a um avião com três motores?
+
+14. Um sistema de satélites consiste de \( N \) componentes e funciona em qualquer dia se pelo menos \( k \) dos \( N \) componentes funcionarem nesse dia. Em dias chuvosos, cada componente funciona independentemente com probabilidade \( p_1 \), ao passo que em dias não chuvosos os componentes funcionam independentemente com probabilidade \( p_2 \). Se a probabilidade de chover amanhã é \( \alpha \), qual é a probabilidade de que o sistema de satélites irá funcionar amanhã?
+
+15. Mostre que \( \sum_{k=0}^{n} \binom{n}{k}^2 = \binom{2n}{n} \).
+
+Dica: defina uma variável aleatória com distribuição hipergeométrica de parâmetros \( 2n, n, n \).
+
+16. Para uma variável aleatória \( N \) assumindo valores inteiros não-negativos, mostre que \( E(N) = \sum_{i=1}^{\infty} P_i(N \geq i) \).
+
+17. Seja \( N \) uma variável aleatória que assume valores inteiros não-negativos. Mostre que \( \sum_{i=0}^{\infty} iP_i(N > i) = \frac{1}{2}(E[N^2] - E[N]) \).
+
+18. Seja \( X \) uma variável aleatória com valor esperado \( \mu \) e variância \( \sigma^2 \). Seja \( Y = \frac{X - \mu}{\sigma^2} \). Determine: (a) \( E[Y] \). (b) \( \text{Var}[Y] \).
+
+A variável \( Y \) assim obtida é denominada variável padronizada (neste caso, \( Y \) é obtida padronizando-se \( X \)) e é de grande importância em várias técnicas de análise estatística.
+
+19. Mostre que para uma variável aleatória \( X \) com distribuição hipergeométrica de parâmetros \( N, m, n \), a variância é dada pela fórmula (4.8).
+
+20. Mostre que: \[ \binom{M}{k} \binom{N - M}{n - k} / \binom{N}{n} \to \binom{n}{k} p^k (1 - p)^{n - k}, \] quando \( N, M \to \infty \) tais que \(\frac{M}{N} \to p\). Interprete o resultado.
+
+21. Seja \( X \) uma variável aleatória Poisson com parâmetro \( \lambda \). Mostre que \( P(X = k) \) atinge o valor máximo para \( k = [\lambda] \), onde \( [\lambda] \) denota o maior inteiro menor ou igual a \( \lambda \).
+
+22. Seja \( X \) uma variável aleatória binomial com parâmetros \( n e p \). Mostre que \( P(X = k) \) atinge o valor máximo para \( k = [(n + 1)p] \).
+
+23. Seja \( X \) uma variável aleatória com distribuição de Poisson com parâmetro \( \lambda \). Determine \( P(X \in A) \), onde \( A = \{0, 2, 4, 6, 8, \ldots\} \).
+
+24. Considere \( X \) uma variável aleatória Poisson com parâmetro \( \lambda \). (a) Mostre que \( E[X^n] = \lambda E[(X + 1)^{n-1}] \). (b) Calcule \( E[X^4] \). (c) Determine \( E[X] \), para \( 0 < \lambda < 1 \). (d) Determine \( E[\cos \pi X] \) e \( \text{Var}[\cos \pi X] \).
+
+25. Suponha que o número de eventos que ocorrem em um intervalo de tempo especificado é uma variável aleatória de Poisson com parâmetro \( \lambda \). Se cada evento é contado com probabilidade \( p \), independentemente de qualquer outro evento, mostre que o número de eventos que são contados é uma variável aleatória Poisson com parâmetro \( \lambda p \).
+
+26. Para uma variável aleatória com distribuição hipergeométrica com parâmetros \( N, m e n \), determine: \[ \frac{P(X = k+1)}{P(X = k)} \].
+
+27. Se \( X \circ Y \) são variáveis aleatórias de Poisson independentes com parâmetros \( \lambda_1 \circ \lambda_2 \), respectivamente, calcule a distribuição de \( X + Y \).
+
+28. Sejam \( X \circ Y \) variáveis aleatórias binomiais independentes com parâmetros \( (n, p) \circ (m, p) \), respectivamente. Determine a distribuição de \( X + Y \).
+
+29. Considere novamente as variáveis do exercício 27. Calcule a distribuição condicional de \( X \) dado que \( X + Y = n \).
+
+30. Considere novamente as variáveis \( X \circ Y \) do exercício 28, com a restrição \( n = m \), isto é, \( X \circ Y \) têm a mesma distribuição binomial \( (n, p) \). Determine a distribuição condicional de \( X \) dado que \( X + Y = m \).
+
+31. Suponha que \( X \circ Y \) são variáveis aleatórias geométricas independentes com mesmo parâmetro \( p \). Calcule \[ P\{X = i|X + Y = n\} \].
+
+32. Suponha que ensaios independentes, cada um tendo probabilidade \( p \) de sucesso, \( 0 < p < 1 \), são realizadas até que um total de \( R \) sucessos seja acumulado. Seja \( X \) o número de ensaios necessários para se obter o total de \( R \) sucessos. Determine a distribuição de \( X \) (tikemos, neste caso, que \( X \) possui distribuição binomial negativa com parâmetros \( R e p \).
+
+33. Considere a variável aleatória \( X \) do exercício anterior. Determine \( E(X) \circ \text{Var}(X) \).
+
+Dica: Observe que \( X = Y_1 + Y_2 + \cdots + Y_R \), onde \( Y_i \) tem distribuição geométrica de parâmetro \( p \), \( 1 \leq i \leq R \).
+
+34. Se ensaios independentes, cada um deles resultando em sucesso com probabilidade \( p \), são realizados indefinidamente, qual a probabilidade de que \( R \) sucessos ocorram antes de \( M \) fracassos?
+
+35. Suponha que existam \( N \) diferentes figurinhas e que um colecionador compre sucessivamente envelopes fechados que contém apenas uma delas. Admita que a probabilidade de um envelope conter uma dada figurinha é \( 1/N \) independentemente uns dos outros. Seja \( X \) o número de envelopes que o colecionador deve comprar até conseguir completar sua coleção. (a) \( X \) tem distribuição binomial negativa? (b) Determine \( E(X) \).
+
+36. Sejam \( X, Y \in Z \) variáveis aleatórias independentes com a mesma distribuição geométrica de parâmetro \( p \). Determine:  
+(a) \( P(X = Y) \). (b) \( P(X \geq 2Y) \). (c) \( P(X + Y \leq Z) \).
+
+37. Sejam \( X \) uma variável aleatória binomial negativa com parâmetros \( R e p \), e \( Y \) uma variável aleatória binomial com parâmetros \( n e p \). Mostre que \( P(X > n) = P(Y < r) \).
+
+38. Mostre que, se a variável aleatória \( X \) tem distribuição de Poisson com parâmetro \( \lambda \), sua variância é dada pela expressão (4.17).
+
+39. Seja \( X \) uma variável aleatória binomial com parâmetros \( n e p \). Qual o valor de \( p \) que maximiza \( P(X = k) \), \( k = 0, 1, 2, \ldots, n \)? Este é um exemplo de um método estatístico usado para estimar \( p \) quando a observação de uma variável aleatória binomial (\( n, p \)) é igual a \( k \). Se o valor de \( n \) é conhecido e o de \( p \) desconhecido, então estimamos \( p \) escolhendo o valor de \( p \) que maximiza \( P(X = k) \). Este método é conhecido como estimação de máxima verossimilhança.
+
+40. Seja \( X \) uma variável aleatória Poisson com parâmetro \( \lambda \). Qual o valor de \( \lambda \) que maximiza \( P(X = k) \), \( k \geq 0 \)? Em outras palavras, determine o estimador de máxima verossimilhança para \( \lambda \).
+
+41. Um número desconhecido, digamos \( N \), de animais de uma certa espécie habitam uma dada região. Para obter alguma informação sobre o tamanho dessa população animal, ecologistas normalmente realizam o seguinte experimento: inicialmente capturam um certo número de animais, digamos \( m \). Em seguida, os animais capturados são marcados de alguma maneira e então devolvidos (soltos) na região em questão. Após um certo período de tempo, necessário para que os animais marcados se dispersem por toda a região, uma nova captura de \( n \) animais é feita. Seja \( X \) o número de animais marcados que são apreendidos na segunda captura. Se admitirmos que a população de animais na região se manteve inalterada (fixa) entre os dois instantes de captura e que em cada um destes instantes os \( N \) animais tinham a mesma probabilidade de serem capturados, determine:  
+(a) \( P(X = i) \) em função de \( N \) (desconhecido).  
+(b) O estimador de máxima verossimilhança para \( N \) se não capturados i animais marcados, isto é, se \( X = i \).
+
+# Probabilidade: Um Curso Moderno
+
+## 5.4 EXERCÍCIOS
+
+1.  Se $X$ é uniformemente distribuída no intervalo $(0, 20)$, calcule a probabilidade de: (a) $X < 3$. (b) $X > 12$. (c) $4 < X < 11$. (d) $|X - 3| < 4$.
+
+2.  Se $X$ é uma variável aleatória normal com parâmetros $\mu = 3$ e $\sigma^2 = 9$, determine: (a) $P\{2 < X < 5\}$. (b) $P\{X > 0\}$. (c) $P\{|X - 3| > 6\}$.
+
+3.  Se $X$ é uma variável aleatória uniformemente distribuída no intervalo $(-3, 7)$, determine: (a) A função de distribuição de $X$. (b) $P\{|X - 1| \leq 2\}$. (c) $P\{|X| > 3\}$.
+
+4.  Ônibus chegam a um determinado ponto de parada em intervalos de tempo de quinze minutos a partir de 7 horas da manhã, isto é, os ônibus chegam ao ponto às 7h00, 7h15, 7h30, 7h45, e assim por diante. Se o instante de chegada de um passageiro ao ponto é uniformemente distribuído entre 7h00 e 7h30, determine a probabilidade: (a) De que ele espere menos que 5 minutos até a chegada de um ônibus. (b) De que ele espere mais de 10 minutos até a chegada de um ônibus.
+
+5.  Seja $X$ o número de caras observadas em 40 lançamentos de uma moeda honesta. Determine a probabilidade de $X = 20$. Utilize a aproximação normal e então compare com o resultado obtido através da distribuição binomial.
+
+6.  Suponha que a duração de uma ligação telefônica em uma cabine pública (em minutos) é uma variável aleatória exponencial com parâmetro $\lambda = \frac{1}{10}$. Se uma pessoa chega imediatamente a sua frente na cabine telefônica pública, ache a probabilidade de que você terá que esperar: (a) mais que 10 minutos; (b) entre 10 e 20 minutos.
+
+7.  Para determinar a eficiência de uma certa dieta na redução da quantidade de colesterol na corrente sanguínea, 100 pessoas são submetidas a esta dieta por um intervalo de tempo bastante prolongado. Em seguida, são registrados os níveis de colesterol destas pessoas. O nutricionista responsável pelo experimento decidiu endossar a dieta se pelo menos 65% das pessoas apresentarem um nível de colesterol menor após serem submetidas à dieta. Qual é a probabilidade de que o nutricionista endosse a nova dieta se, na verdade, ela não tem efeito algum sobre o nível de colesterol? (Admita que se a dieta não tem efeito algum sobre a quantidade de colesterol, então o nível de colesterol de cada pessoa será menor após a dieta com probabilidade 1/2.)
+
+8.  Suponha que um componente eletrônico tenha um tempo de vida $X$ (em unidades de 1000 horas) que é considerado uma variável aleatória com função densidade de probabilidade $f(x) = e^{-x}$, $x > 0$. Suponha também que o custo de fabricação de um item seja R$ 2,00 e o preço de venda seja R$ 5,00. O fabricante garante devolução total do dinheiro se $x \leq 0,9$. Qual o lucro esperado do fabricante por item produzido?
+
+9.  Um ponto é escolhido ao acaso em um segmento de reta de comprimento $L$. Determine a probabilidade de que a razão entre o menor e o maior segmentos obtidos após a escolha deste ponto seja menor que 1/4.
+
+10. Um ônibus viaja entre duas cidades, A e B, separadas por uma distância de 100 quilômetros. Se o ônibus sofre uma avaria durante a viagem, a distância do local da avaria à cidade A tem uma distribuição uniforme no intervalo $(0, 100)$. Existe uma estação de reparo na cidade A, uma estação de reparo na cidade B, e uma outra estação no centro da rota entre A e B. Foi sugerido que seria mais eficiente ter as três estações de reparo localizadas a 25, 50 e 75 quilômetros, respectivamente, de A. Você concorda com esta sugestão? Justifique.
+
+11. A confiabilidade de um mecanismo eletrônico é a probabilidade de que ele funcione sob as condições para as quais foi planejado. Uma amostra de 1000 destes itens é escolhida ao acaso, e estes itens selecionados são testados. Calcule a probabilidade de se obter pelo menos 30 itens defeituosos, supondo que a confiabilidade de cada item é 0,95. Indique que suposições está fazendo ao efetuar tal cálculo.
+
+12. A quantidade de chuva anual em uma certa região é normalmente distribuída com $\mu = 40$ e $\sigma = 4$. Qual a probabilidade de que, começando a registrar os índices pluviométricos este ano, serão necessários mais do que 10 anos para se registrar uma quantidade de chuva anual maior que 50? Que suposições você está fazendo?
+
+13. Um corpo de bombeiros está para ser construído ao longo de uma estrada de comprimento $A$, $A < \infty$. Se incêndios ocorrem de maneira uniforme ao longo desta estrada, onde o corpo de bombeiros deveria ser instalado para minimizar a distância esperada ao incêndio? Isto é, determine $\alpha$ que minimize $E[|X - \alpha|]$, onde $X$, que denota a posição da ocorrência de um incêndio nesta estrada, é uniformemente distribuído em $(0, A)$.
+
+14. O tempo (em horas) necessário para reparar uma máquina é uma variável aleatória exponencialmente distribuída com parâmetro $\lambda = \frac{1}{2}$. Determine:
+    (a) A probabilidade de que o tempo de reparo exceda duas horas.
+    (b) A probabilidade condicional de que o tempo de reparo será maior que onze horas dado que a duração do reparo excede nove horas.
+
+15. Uma empresa produz automóveis e garante a restituição da quantia paga se qualquer automóvel apresentar algum defeito grave no prazo de seis meses. A empresa produz automóveis do tipo A comum e do tipo B de luxo, com um lucro de R$ 1.000,00 e R$ 2.000,00, respectivamente, caso não haja restituição, e com um prejuízo de R$ 3.000,00 e R$ 8.000,00, respectivamente, se houver restituição. Suponha que o tempo para a ocorrência de algum defeito grave seja, em ambos os casos, uma variável aleatória com distribuição normal, respectivamente com médias 9 meses e 12 meses, e variâncias 4 meses e 9 meses. Se tivesse que planejar uma estratégia de marketing para a empresa, você incentivaria as vendas dos automóveis do tipo A ou do tipo B. Justifique.
+
+16. Uma máquina funciona se pelo menos três de cinco dos seus componentes estiverem funcionando. Cada componente, independentemente dos demais, funciona por um tempo que é uma variável aleatória com função densidade de probabilidade dada por $f(x) = \frac{1}{5}e^{-x/5}$, $x > 0$, e em horas. (a) Determine a probabilidade de que a máquina funcione por mais de cinco horas. (b) Determine o número médio de componentes funcionando dez horas após a máquina ser ligada. Deixe claras as suposições que está fazendo para resolver os itens (a) e (b).
+
+17. Suponha que o número de horas $X$ que uma máquina opera antes de falhar tem uma distribuição contínua com função densidade de probabilidade $f(x) = \frac{1}{100}e^{-x/100}$, $x > 0$. Suponha que no momento em que a máquina é colocada para funcionar, você deve decidir quando retornar para inspecioná-la. Se você retorna antes de a máquina falhar, você incorre num custo de B reais por ter perdido a inspeção. Se você retorna após a quebra da máquina, você incorre num custo de C reais por hora pelo período de tempo durante o qual a máquina não estava operando após a falha. Qual o número ótimo de horas que você deve esperar antes de retornar para a inspeção de forma a minimizar seu custo esperado?
+
+18. Uma fração desconhecida $p$ de uma certa população é de fumantes, e uma amostragem aleatória com reposição será usada para avaliar o valor de $p$. Deseja-se encontrar $p$ com um erro que não exceda 0,005, com alta probabilidade. Em outras palavras, deseja-se que, com alta probabilidade, a proporção amostral a ser obtida não difira mais de 0,005 da proporção $p$ real de fumantes. Qual deve ser o tamanho da amostra $n$ para que isto ocorra? Explicite as suposições que está fazendo. Admitindo-se agora que $p \leq 20\%$. Qual deve ser o tamanho da amostra $n$ para que a condição exposta acima seja satisfeita?
+
+19. Com base na definição de taxa de falha, determine a função taxa de falha de uma variável aleatória gama com parâmetros $t$ e $\lambda$.
+
+20. Calcule a função taxa de falha de $X$ quando $X$ é uniformemente distribuída em $(0, a)$, $a > 0$.
+
+21. Costuma-se dizer que a taxa de mortalidade de pessoas fumantes é, em cada idade, o dobro da taxa de mortalidade de pessoas não-fumantes. O que isto significa? Isto significa que a probabilidade de uma pessoa não-fumante sobreviver um determinado número de anos corresponde a duas vezes a probabilidade de uma pessoa fumante, de mesma idade, sobreviver este mesmo número de anos?
+
+22. Seja $X$ uma variável aleatória não-negativa e contínua. Mostre que:
+    $$ E(X) = \int_{0}^{\infty} P(X > t)dt $$
+
+23. Para uma variável aleatória não-negativa $T$, o tempo médio de vida residual é definido por $m(t) = E[T - t | T \geq t]$.
+    (a) Mostre que $m(t) = \frac{\int_{t}^{\infty} R(x)dx}{R(t)}$. Interprete o significado de $m(t)$.
+    (b) Calcule $m(t)$ quando $T$ tem distribuição exponencial de parâmetro $\lambda$.
+    (c) Calcule $m(t)$ quando $T$ é uniformemente distribuído no intervalo $(0, A)$, $A < \infty$.
+
+24. Determine a função geradora de momentos de uma variável aleatória uniformemente distribuída no intervalo $(a, b)$.
+
+25. Uma variável aleatória $X$ tem distribuição beta com parâmetros $\alpha$ e $\beta$, $\alpha, \beta > 0$, se sua função densidade de probabilidade é dada por $f(x) = \frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}$, $0 < x < 1$, e zero caso contrário, onde $B(\alpha,\beta) = \int_{0}^{1} z^{\alpha-1}(1-z)^{\beta-1}dz = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$.
+    (a) Determine $E(X)$ e $Var(X)$.
+    (b) Para $\alpha > 1$ e $\beta > 1$, determine $x^*$ tal que $f(x^*) = \max_{0<x<1} f(x)$.
+    A distribuição beta é comumente utilizada em inferência Bayesiana quando se estudam quantidades de interesse assumindo valores no intervalo $(0, 1)$ como, por exemplo, a proporção de fumantes em uma certa população. Observe ainda que, se $\alpha = \beta = 1$, $X$ é uniformemente distribuída em $(0, 1)$.
+
+26. Uma variável aleatória $X$ tem distribuição de Laplace com parâmetro $\lambda, \lambda > 0$, se sua função densidade de probabilidade é dada por:
+    $$ f(x) = \frac{\lambda}{2}e^{-\lambda|x|}, x \in \mathbb{R} $$
+    Determine a função de distribuição de $X$.
+
+27. Se $X$ é uniformemente distribuída no intervalo $(0, 1)$, qual a distribuição de $Y = -\log X$?
+
+28. Se $X$ é uma variável aleatória exponencial com parâmetro $\lambda$ e $c > 0$ uma constante real, determine a distribuição de $Y = cX$.
+
+29. A mediana de uma variável aleatória contínua, cuja função de distribuição $F$ é o valor real $m$ tal que $F(m) = \frac{1}{2}$. Determine a mediana da variável aleatória $X$ se $X$ é (a) Uniformemente distribuída no intervalo $(a, b)$. (b) Normal com parâmetros $\mu$ e $\sigma^2$. (c) Exponencial com parâmetro $\lambda$.
+
+30. A moda de uma variável aleatória contínua, cuja função densidade de probabilidade é $f$, é o valor de $x$ para o qual $f$ atinge valor máximo. Calcule a moda da variável aleatória $X$ nos casos (a), (b) e (c) do exercício anterior.
+
+31. Mostre que se $X$ é uma variável aleatória Weibull com parâmetros $\alpha$ e $\beta$, então $Y = (\frac{X}{\beta})^\alpha$ é uma variável aleatória exponencial com parâmetro 1, e vice-versa.
+
+32. Se $X$ é uniformemente distribuída em $(a, b)$, qual variável aleatória que possui uma relação linear com $X$ é uniformemente distribuída no intervalo $(0, 1)$? Em outras palavras, determine $\alpha, \beta \in \mathbb{R}$, tais que $Y = \alpha X + \beta$ tem distribuição uniforme $(0, 1)$.
+
+33. Seja $X$ uma variável aleatória contínua com função de distribuição $F$ qualquer, defina a variável aleatória $Y$ por $Y = F(X)$. Mostre que $Y$ é uniformemente distribuída no intervalo $(0, 1)$. Este resultado é de grande importância em técnicas de simulação de variáveis aleatórias, uma vez que, para obtermos observações de uma variável aleatória contínua com função de distribuição $F$ qualquer, basta gerarmos valores da distribuição uniforme $(0, 1)$ e, em seguida, aplicarmos $F^{-1}$ a estes valores, onde $F^{-1}$ é a função inversa de $F$.
+
+34. Se $X$ é uniformemente distribuída no intervalo $(-1, 1)$, determine a função densidade de probabilidade da variável aleatória $Y = |X|$.
+
+35. Ache a distribuição de $R = A\sin\theta$, onde $A$ é uma constante fixada e $\theta$ é distribuída uniformemente em $(-\frac{\pi}{2}, \frac{\pi}{2})$. Tal variável aleatória aparece na teoria de balística. Se um projétil é lançado de um certo ponto da superfície da Terra, formando um ângulo $\theta$ em relação a esta superfície e com velocidade $v$, então o alcance deste lançamento, $R$, pode ser expresso por $R = \frac{v^2}{g}\sin(2\theta)$, onde $g$ é a constante gravitacional.
+
+36. Dizemos que uma variável aleatória $X$ tem distribuição de Pareto com parâmetros $\alpha$ e $\beta$, $\alpha, \beta > 0$, se sua função densidade de probabilidade é dada por: $f(x) = \frac{\alpha}{\beta}(\frac{\beta}{x})^{\alpha+1}$, $x > \beta$, $f(x) = 0$, $x < \beta$. Mostre que, para $\alpha > 1$, $E(X) = \frac{\alpha\beta}{\alpha-1}$ e para $\alpha > 2$, $Var(X) = \frac{\alpha\beta^2}{(\alpha-1)^2(\alpha-2)}$.
+
+37. Outra distribuição bastante comum em economia é a distribuição lognormal. A variável aleatória $X$ assumindo valores positivos tem uma distribuição lognormal com parâmetros $\mu$ e $\sigma^2$, $\mu \in \mathbb{R}$ e $\sigma^2 > 0$, se $Y = \log X$ tem distribuição normal com média $\mu$ e variância $\sigma^2$. Determine: (a) A função densidade de probabilidade de $X$. (b) $E(X)$ e $Var(X)$.
+
+38. Seja $X$ uma variável aleatória normal com média 0 e variância 1. Seja $Y = X^2$. (a) Determine a função densidade de probabilidade de $Y$. (b) Calcule $E(Y)$ e $Var(Y)$.
+    $Y$ construída deste modo é denominada uma variável aleatória com distribuição qui-quadrado ($\chi^2$) com 1 grau de liberdade. De um modo geral pode-se construir variáveis aleatórias $\chi_n^2$ com $n$ graus de liberdade, cujo papel é fundamental em diversos métodos estatísticos.
+
+39. Seja $X$ uma variável com distribuição gama com parâmetros $\alpha$ e $\beta$. Defina a variável aleatória $Z$ como sendo $Z = 2\beta X$. Determine a função densidade de probabilidade de $Z$, com $2\alpha$ e $\frac{1}{2}$. Qual a distribuição de $Z$ se $\alpha = \frac{n}{2}$?
+
+40. Seja $X$ uma variável aleatória com distribuição beta de parâmetros $\alpha$ e $\beta$. Defina a variável aleatória $Y$ como sendo $Y = \frac{\alpha X}{\beta(1 - X)}$. Obtenha a função densidade de probabilidade de $Y$.
+    (A variável aleatória $Y$ construída deste modo possui distribuição denominada distribuição F-Snedecor com $2\alpha$ e $2\beta$ graus de liberdade. Como a distribuição de qui-quadrado, a distribuição F-Snedecor também é de extrema importância em diversos métodos estatísticos.)
+
+41. Seja $X$ uma variável aleatória contínua com função densidade de probabilidade $f$, que depende apenas de $x$ e de um parâmetro $\theta$, isto é,
+    1) $f(x) \geq 0, \forall x \in \mathbb{R}$;
+    2) $\int_{-\infty}^{\infty} f(x)dx = 1$;
+    3) $f(x) = f(x, \theta)$.
+    Dizemos que $f$ pertence à família exponencial uniparamétrica de distribuições se $f$ pode ser escrita da seguinte forma:
+    $f(X) = f(x, \theta) = S(x)h(\theta)e^{c(\theta)T(x)}$, $\forall x \in D$, onde $D$ não depende de $\theta$ e $S, T, h$ e $c$ são funções reais. Verifique quais das distribuições a seguir pertencem à família exponencial: (a) Distribuição uniforme no intervalo $(0, A)$, $A < \infty$. (b) Distribuição normal com média $\mu$ e variância $A$. (c) Distribuição exponencial com parâmetro $\lambda, \lambda > 0$. (d) Distribuição beta com parâmetros $\alpha$ e $\beta$, $\alpha$ conhecido.
+    
