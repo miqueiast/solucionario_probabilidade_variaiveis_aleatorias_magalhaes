@@ -1,0 +1,182 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Exercícios do Livro Magalhães - Capítulo 03\\\large{Seção 3.4}}
+\author{Aluno: Miqueias T}
+\date{27 de Agosto de 2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introdução}
+Este documento apresenta a resolução de exercícios teóricos selecionados sobre a definição formal de variáveis aleatórias, independência de eventos e propriedades de funções de distribuição. Os problemas exploram conceitos fundamentais da teoria da medida e da probabilidade.
+
+\section{Exercício 1}
+
+\begin{quote}
+Sendo X e Y variáveis aleatórias em $(\Omega, \mathcal{F}, P)$, mostre que $\min(X,Y)$ e $\max(X,Y)$ também são variáveis aleatórias.
+\end{quote}
+
+\subsection*{Resolução}
+Para mostrar que uma função $Z: \Omega \to \mathbb{R}$ é uma variável aleatória, precisamos provar que o conjunto $\{\omega \in \Omega : Z(\omega) \le z\}$ pertence à $\sigma$-álgebra $\mathcal{F}$ para todo $z \in \mathbb{R}$.
+
+\paragraph{Prova para $Z = \max(X,Y)$:}
+Vamos analisar o evento $\{Z \le z\}$, ou seja, $\{\max(X,Y) \le z\}$.
+O máximo de dois números é menor ou igual a $z$ se, e somente se, ambos os números são menores ou iguais a $z$. Portanto, podemos reescrever o evento da seguinte forma:
+\[ \{\max(X,Y) \le z\} = \{X \le z \text{ e } Y \le z\} \]
+Este evento corresponde à interseção de dois outros eventos:
+\[ \{\omega \in \Omega : X(\omega) \le z\} \cap \{\omega \in \Omega : Y(\omega) \le z\} \]
+Por definição, como X e Y são variáveis aleatórias, os conjuntos $\{X \le z\}$ e $\{Y \le z\}$ pertencem a $\mathcal{F}$ para qualquer $z \in \mathbb{R}$.
+Uma das propriedades fundamentais de uma $\sigma$-álgebra é que ela é fechada sob interseções finitas. Como ambos os conjuntos estão em $\mathcal{F}$, a sua interseção também deve estar em $\mathcal{F}$.
+Logo, $\{\max(X,Y) \le z\} \in \mathcal{F}$ para todo $z \in \mathbb{R}$, o que prova que $\max(X,Y)$ é uma variável aleatória.
+
+\paragraph{Prova para $W = \min(X,Y)$:}
+Agora, vamos analisar o evento $\{W \le z\}$, ou seja, $\{\min(X,Y) \le z\}$.
+O mínimo de dois números é menor ou igual a $z$ se, e somente se, pelo menos um dos números é menor ou igual a $z$. Assim, podemos reescrever o evento como uma união:
+\[ \{\min(X,Y) \le z\} = \{X \le z \text{ ou } Y \le z\} \]
+Este evento corresponde à união de dois outros eventos:
+\[ \{\omega \in \Omega : X(\omega) \le z\} \cup \{\omega \in \Omega : Y(\omega) \le z\} \]
+Novamente, como X e Y são variáveis aleatórias, os conjuntos $\{X \le z\}$ e $\{Y \le z\}$ pertencem a $\mathcal{F}$.
+Uma $\sigma$-álgebra também é fechada sob uniões finitas. Portanto, a união dos dois conjuntos também pertence a $\mathcal{F}$.
+Logo, $\{\min(X,Y) \le z\} \in \mathcal{F}$ para todo $z \in \mathbb{R}$, o que prova que $\min(X,Y)$ é uma variável aleatória.
+\hfill \qedsymbol
+
+\pagebreak
+
+\section{Exercício 3}
+
+\begin{quote}
+Mostre que $A_1, A_2, \dots, A_n$ são eventos independentes se e só se $I_{A_1}, I_{A_2}, \dots, I_{A_n}$ forem variáveis aleatórias independentes.
+\end{quote}
+
+\subsection*{Resolução}
+Seja $I_{A_i}$ a variável aleatória indicadora do evento $A_i$, tal que $I_{A_i}=1$ se $A_i$ ocorre, e $I_{A_i}=0$ caso contrário. Note que $P(I_{A_i}=1) = P(A_i)$ e $P(I_{A_i}=0) = 1 - P(A_i) = P(A_i^c)$.
+
+\paragraph{($\Rightarrow$) Se os eventos são independentes, as v.a. indicadoras são independentes.}
+Assumimos que $A_1, \dots, A_n$ são eventos independentes. Para mostrar que as variáveis aleatórias $I_{A_1}, \dots, I_{A_n}$ são independentes, devemos mostrar que para qualquer escolha de $x_1, \dots, x_n \in \{0,1\}$:
+\[ P(I_{A_1}=x_1, \dots, I_{A_n}=x_n) = \prod_{i=1}^{n} P(I_{A_i}=x_i) \]
+O evento $\{I_{A_1}=x_1, \dots, I_{A_n}=x_n\}$ corresponde à interseção de $n$ eventos, onde o $i$-ésimo evento é $A_i$ se $x_i=1$, ou $A_i^c$ se $x_i=0$. Vamos chamar esses eventos de $B_i$.
+\[ \{I_{A_1}=x_1, \dots, I_{A_n}=x_n\} = \bigcap_{i=1}^n B_i, \quad \text{onde } B_i = \begin{cases} A_i & \text{se } x_i=1 \\ A_i^c & \text{se } x_i=0 \end{cases} \]
+Como os eventos $A_1, \dots, A_n$ são independentes, qualquer coleção formada por $A_i$ ou seus complementos $A_i^c$ também será de eventos independentes. Portanto, os eventos $B_1, \dots, B_n$ são independentes.
+Assim,
+\begin{align*}
+    P(I_{A_1}=x_1, \dots, I_{A_n}=x_n) &= P\left(\bigcap_{i=1}^n B_i\right) \\
+    &= \prod_{i=1}^n P(B_i) \quad (\text{pela independência dos } B_i) \\
+    &= \prod_{i=1}^n P(I_{A_i}=x_i)
+\end{align*}
+Isso prova que as variáveis aleatórias indicadoras são independentes.
+
+\paragraph{($\Leftarrow$) Se as v.a. indicadoras são independentes, os eventos são independentes.}
+Assumimos que $I_{A_1}, \dots, I_{A_n}$ são variáveis aleatórias independentes. Para mostrar que os eventos $A_1, \dots, A_n$ são independentes, devemos mostrar que para qualquer subconjunto de índices $J \subseteq \{1, \dots, n\}$:
+\[ P\left(\bigcap_{j \in J} A_j\right) = \prod_{j \in J} P(A_j) \]
+O evento $\bigcap_{j \in J} A_j$ é precisamente o evento em que $I_{A_j}=1$ para todo $j \in J$.
+\[ P\left(\bigcap_{j \in J} A_j\right) = P(I_{A_j}=1 \text{ para todo } j \in J) \]
+Como as variáveis indicadoras são independentes, a probabilidade da ocorrência conjunta é o produto das probabilidades marginais:
+\begin{align*}
+    P(I_{A_j}=1 \text{ para todo } j \in J) &= \prod_{j \in J} P(I_{A_j}=1) \\
+    &= \prod_{j \in J} P(A_j)
+\end{align*}
+Isso prova que os eventos são independentes. \hfill \qedsymbol
+
+\pagebreak
+
+\section{Exercício 5}
+
+\begin{quote}
+Seja X uma variável aleatória com função de distribuição $F_X$. Seja $Y=h(X)$ com função de distribuição $F_Y$. Mostre que:
+\begin{itemize}
+    \item[a.] $F_{X,Y}(x,y) = \min\{F_X(x), F_Y(y)\}$, se h é monótona crescente.
+    \item[b.] $F_{X,Y}(x,y) = \max\{F_X(x) + F_Y(y) - 1, 0\}$, se h é monótona decrescente.
+\end{itemize}
+\end{quote}
+
+\subsection*{Resolução}
+A função de distribuição conjunta é $F_{X,Y}(x,y) = P(X \le x, Y \le y)$. Substituindo $Y=h(X)$, temos $F_{X,Y}(x,y) = P(X \le x, h(X) \le y)$.
+
+\subsubsection*{a. h é monótona crescente}
+Se $h$ é monótona crescente, ela possui uma inversa $h^{-1}$ que também é monótona crescente. A desigualdade $h(X) \le y$ é equivalente a $X \le h^{-1}(y)$.
+\begin{align*}
+    F_{X,Y}(x,y) &= P(X \le x \text{ e } X \le h^{-1}(y)) \\
+    &= P(X \le \min\{x, h^{-1}(y)\}) \\
+    &= F_X(\min\{x, h^{-1}(y)\})
+\end{align*}
+Como a função $F_X$ é não-decrescente, $F_X(\min\{a,b\}) = \min\{F_X(a), F_X(b)\}$. Assim:
+\[ F_{X,Y}(x,y) = \min\{F_X(x), F_X(h^{-1}(y))\} \]
+Agora, vamos analisar o termo $F_Y(y)$.
+\[ F_Y(y) = P(Y \le y) = P(h(X) \le y) = P(X \le h^{-1}(y)) = F_X(h^{-1}(y)) \]
+Substituindo isso na expressão anterior, obtemos o resultado desejado:
+\[ F_{X,Y}(x,y) = \min\{F_X(x), F_Y(y)\}. \]
+
+\subsubsection*{b. h é monótona decrescente}
+Se $h$ é monótona decrescente, sua inversa $h^{-1}$ também é. A desigualdade $h(X) \le y$ é equivalente a $X \ge h^{-1}(y)$ (a ordem da desigualdade inverte).
+\begin{align*}
+    F_{X,Y}(x,y) &= P(X \le x \text{ e } X \ge h^{-1}(y)) \\
+    &= P(h^{-1}(y) \le X \le x)
+\end{align*}
+Se $x < h^{-1}(y)$, o intervalo é vazio e a probabilidade é 0. Caso contrário, para uma v.a. contínua, a probabilidade é $F_X(x) - F_X(h^{-1}(y))$.
+Vamos analisar a expressão dada: $\max\{F_X(x) + F_Y(y) - 1, 0\}$.
+Primeiro, calculamos $F_Y(y)$:
+\[ F_Y(y) = P(Y \le y) = P(h(X) \le y) = P(X \ge h^{-1}(y)) = 1 - P(X < h^{-1}(y)) \]
+Assumindo que X é contínua, $P(X < h^{-1}(y)) = F_X(h^{-1}(y))$. Portanto, $F_Y(y) = 1 - F_X(h^{-1}(y))$.
+Agora, substituímos na expressão:
+\begin{align*}
+    F_X(x) + F_Y(y) - 1 &= F_X(x) + (1 - F_X(h^{-1}(y))) - 1 \\
+    &= F_X(x) - F_X(h^{-1}(y))
+\end{align*}
+Isso corresponde a $P(h^{-1}(y) \le X \le x)$. O termo $\max\{\dots, 0\}$ garante que a probabilidade seja não-negativa, cobrindo o caso em que o intervalo é vazio.
+Portanto, a identidade está correta. \hfill \qedsymbol
+
+\pagebreak
+
+\section{Exercício 7}
+\begin{quote}
+Mostre que, para variáveis contínuas X e Y, temos
+\[ F_X(x) + F_Y(y) - 1 \le F_{X,Y}(x,y) \le \sqrt{F_X(x)F_Y(y)}; \forall x,y \in \mathbb{R}. \]
+\end{quote}
+
+\subsection*{Resolução}
+Vamos provar as duas desigualdades separadamente. Sejam os eventos $A = \{X \le x\}$ e $B = \{Y \le y\}$. Pelas definições das funções de distribuição, temos:
+\begin{itemize}
+    \item $P(A) = F_X(x)$
+    \item $P(B) = F_Y(y)$
+    \item $P(A \cap B) = F_{X,Y}(x,y)$
+\end{itemize}
+
+\paragraph{Prova da Desigualdade à Esquerda: $F_X(x) + F_Y(y) - 1 \le F_{X,Y}(x,y)$}
+Esta desigualdade é uma consequência direta da fórmula de união de probabilidades (ou desigualdade de Bonferroni).
+A probabilidade da união de dois eventos é:
+\[ P(A \cup B) = P(A) + P(B) - P(A \cap B) \]
+Sabemos que qualquer probabilidade deve ser menor ou igual a 1, então $P(A \cup B) \le 1$.
+\[ P(A) + P(B) - P(A \cap B) \le 1 \]
+Reorganizando os termos para isolar $P(A \cap B)$:
+\[ P(A) + P(B) - 1 \le P(A \cap B) \]
+Substituindo pelas funções de distribuição, obtemos a desigualdade desejada:
+\[ F_X(x) + F_Y(y) - 1 \le F_{X,Y}(x,y). \]
+
+\paragraph{Prova da Desigualdade à Direita: $F_{X,Y}(x,y) \le \sqrt{F_X(x)F_Y(y)}$}
+Esta desigualdade pode ser provada usando a desigualdade de Cauchy-Schwarz para variáveis aleatórias.
+Sejam $I_A$ e $I_B$ as variáveis aleatórias indicadoras dos eventos A e B. A desigualdade de Cauchy-Schwarz para esperanças afirma que $(E[UV])^2 \le E[U^2]E[V^2]$.
+Aplicando para $U=I_A$ e $V=I_B$:
+\[ (E[I_A I_B])^2 \le E[I_A^2] E[I_B^2] \]
+Uma propriedade das variáveis indicadoras é que $I_A^2=I_A$ (pois $0^2=0$ e $1^2=1$). Da mesma forma, $I_B^2=I_B$. Além disso, o produto $I_A I_B$ é a indicadora da interseção, $I_{A \cap B}$. A esperança de uma variável indicadora é a probabilidade do evento correspondente.
+\begin{itemize}
+    \item $E[I_A I_B] = E[I_{A \cap B}] = P(A \cap B)$
+    \item $E[I_A^2] = E[I_A] = P(A)$
+    \item $E[I_B^2] = E[I_B] = P(B)$
+\end{itemize}
+Substituindo na desigualdade de Cauchy-Schwarz:
+\[ (P(A \cap B))^2 \le P(A) P(B) \]
+Tirando a raiz quadrada de ambos os lados (como probabilidades são não-negativas, a desigualdade se mantém):
+\[ P(A \cap B) \le \sqrt{P(A)P(B)} \]
+Substituindo de volta pelas funções de distribuição:
+\[ F_{X,Y}(x,y) \le \sqrt{F_X(x)F_Y(y)}. \]
+Isso completa a demonstração das duas desigualdades. \hfill \qedsymbol
+
+\end{document}
