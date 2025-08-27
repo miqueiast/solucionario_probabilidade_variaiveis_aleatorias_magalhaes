@@ -1,0 +1,629 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Resolução Exercícios do Livro Magalhães - Capítulo 03 - Seção 3.2}
+\author{Aluno: Miqueias T}
+\date{10/08/2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introdução}
+Este documento apresenta a resolução detalhada de exercícios selecionados sobre variáveis aleatórias contínuas conjuntas, abrangendo o cálculo de densidades marginais, verificação de independência, densidades condicionais e funções de distribuição conjunta.
+
+\section{Exercício 1}
+
+\begin{quote}
+Sejam X e Y variáveis aleatórias em $(\Omega, \mathcal{F}, P)$ com função de distribuição conjunta dada por $F_{X,Y}$. Mostre que $P(a_1 < X \le b_1, a_2 < Y \le b_2)$, com $a_1, b_1, a_2$ e $b_2 \in \mathbb{R}$, pode ser escrita como:
+\[ F_{X,Y}(b_1, b_2) + F_{X,Y}(a_1, a_2) - F_{X,Y}(a_1, b_2) - F_{X,Y}(b_1, a_2). \]
+\end{quote}
+
+\subsection*{Resolução}
+
+O nosso objetivo é expressar a probabilidade de um evento retangular, $\{a_1 < X \le b_1, a_2 < Y \le b_2\}$, em termos da função de distribuição acumulada (CDF) conjunta, $F_{X,Y}(x,y) = P(X \le x, Y \le y)$.
+
+A maneira mais intuitiva de abordar isso é através da geometria das probabilidades no plano cartesiano. A probabilidade que queremos encontrar corresponde à "área" de um retângulo. A CDF, $F_{X,Y}(x,y)$, nos dá a probabilidade da região semi-infinita à esquerda e abaixo do ponto $(x,y)$.
+
+Podemos obter a probabilidade do retângulo de interesse começando com a região maior $\{X \le b_1, Y \le b_2\}$ e subtraindo as partes que não queremos.
+
+A demonstração pode ser feita decompondo o evento. Primeiro, vamos fixar o intervalo de Y e decompor o intervalo de X:
+\begin{align*}
+P(a_1 < X \le b_1, a_2 < Y \le b_2) &= P(\{X \le b_1, a_2 < Y \le b_2\} \setminus \{X \le a_1, a_2 < Y \le b_2\}) \\
+&= P(X \le b_1, a_2 < Y \le b_2) - P(X \le a_1, a_2 < Y \le b_2)
+\end{align*}
+Isso é válido porque o evento $\{X \le a_1, a_2 < Y \le b_2\}$ é um subconjunto do evento $\{X \le b_1, a_2 < Y \le b_2\}$.
+
+Agora, podemos decompor cada um dos dois termos acima em relação a Y:
+\begin{enumerate}
+    \item O primeiro termo, $P(X \le b_1, a_2 < Y \le b_2)$, pode ser escrito como:
+    \begin{align*}
+    P(X \le b_1, a_2 < Y \le b_2) &= P(\{X \le b_1, Y \le b_2\} \setminus \{X \le b_1, Y \le a_2\}) \\
+    &= P(X \le b_1, Y \le b_2) - P(X \le b_1, Y \le a_2) \\
+    &= F_{X,Y}(b_1, b_2) - F_{X,Y}(b_1, a_2)
+    \end{align*}
+
+    \item O segundo termo, $P(X \le a_1, a_2 < Y \le b_2)$, pode ser escrito de forma análoga:
+    \begin{align*}
+    P(X \le a_1, a_2 < Y \le b_2) &= P(\{X \le a_1, Y \le b_2\} \setminus \{X \le a_1, Y \le a_2\}) \\
+    &= P(X \le a_1, Y \le b_2) - P(X \le a_1, Y \le a_2) \\
+    &= F_{X,Y}(a_1, b_2) - F_{X,Y}(a_1, a_2)
+    \end{align*}
+\end{enumerate}
+
+Finalmente, substituímos os resultados de (1) e (2) de volta na nossa equação original:
+\begin{align*}
+P(a_1 < X \le b_1, a_2 < Y \le b_2) &= \left[ F_{X,Y}(b_1, b_2) - F_{X,Y}(b_1, a_2) \right] - \left[ F_{X,Y}(a_1, b_2) - F_{X,Y}(a_1, a_2) \right] \\
+&= F_{X,Y}(b_1, b_2) - F_{X,Y}(b_1, a_2) - F_{X,Y}(a_1, b_2) + F_{X,Y}(a_1, a_2)
+\end{align*}
+
+Reorganizando os termos para corresponder à forma pedida no enunciado:
+\[ P(a_1 < X \le b_1, a_2 < Y \le b_2) = F_{X,Y}(b_1, b_2) + F_{X,Y}(a_1, a_2) - F_{X,Y}(a_1, b_2) - F_{X,Y}(b_1, a_2). \]
+Isso conclui a demonstração. \hfill \qedsymbol
+
+\section{Exercício 2}
+
+\begin{quote}
+Mostre que $H$ não é função de distribuição conjunta.
+\[ H(x,y) = \begin{cases} 1, & \text{se } \max(x,y) \ge 0 \text{ ou } x^2+y^2 \le 1; \\ 0, & \text{caso contrário.} \end{cases} \]
+\end{quote}
+
+\subsection*{Resolução}
+
+Para mostrar que $H(x,y)$ não é uma função de distribuição conjunta (CDF), precisamos mostrar que ela viola pelo menos uma das propriedades fundamentais de uma CDF. Uma das propriedades mais importantes, que deriva da não-negatividade da probabilidade, é que para quaisquer $a_1 < b_1$ e $a_2 < b_2$, a probabilidade do retângulo $(a_1, b_1] \times (a_2, b_2]$ deve ser não-negativa.
+
+Conforme demonstrado no Exercício 1, essa probabilidade é calculada como:
+\[ P(a_1 < X \le b_1, a_2 < Y \le b_2) = H(b_1, b_2) + H(a_1, a_2) - H(a_1, b_2) - H(b_1, a_2) \ge 0. \]
+
+Vamos tentar encontrar um contraexemplo, ou seja, um conjunto de valores $a_1, b_1, a_2, b_2$ para o qual esta expressão resulta em um valor negativo.
+
+Seja o retângulo definido por $a_1 = -2$, $b_1 = 1$, $a_2 = -2$ e $b_2 = 1$.
+Agora, vamos calcular o valor de $H$ para cada um dos quatro pontos de interesse: $(b_1, b_2)$, $(a_1, a_2)$, $(a_1, b_2)$ e $(b_1, a_2)$.
+
+\begin{itemize}
+    \item \textbf{$H(b_1, b_2) = H(1, 1)$:} \\
+    Como $\max(1,1) = 1 \ge 0$, a primeira condição é satisfeita. Portanto, $H(1,1) = 1$.
+
+    \item \textbf{$H(a_1, a_2) = H(-2, -2)$:} \\
+    Primeiro, $\max(-2,-2) = -2 < 0$. A primeira condição não é satisfeita. \\
+    Segundo, $(-2)^2 + (-2)^2 = 4 + 4 = 8 > 1$. A segunda condição também não é satisfeita. \\
+    Como nenhuma das condições é satisfeita, estamos no "caso contrário". Portanto, $H(-2,-2) = 0$.
+
+    \item \textbf{$H(a_1, b_2) = H(-2, 1)$:} \\
+    Como $\max(-2,1) = 1 \ge 0$, a primeira condição é satisfeita. Portanto, $H(-2,1) = 1$.
+
+    \item \textbf{$H(b_1, a_2) = H(1, -2)$:} \\
+    Como $\max(1,-2) = 1 \ge 0$, a primeira condição é satisfeita. Portanto, $H(1,-2) = 1$.
+\end{itemize}
+
+Agora, substituímos esses valores na fórmula da probabilidade do retângulo:
+\begin{align*}
+P(-2 < X \le 1, -2 < Y \le 1) &= H(1, 1) + H(-2, -2) - H(-2, 1) - H(1, -2) \\
+&= 1 + 0 - 1 - 1 \\
+&= -1
+\end{align*}
+
+Como a probabilidade calculada para este retângulo é $-1$, que é um valor negativo, a função $H(x,y)$ viola uma propriedade essencial das funções de distribuição conjunta.
+
+Portanto, \textbf{$H$ não é uma função de distribuição conjunta}. \hfill \qedsymbol
+
+\section{Exercício 3}
+
+\begin{quote}
+A densidade conjunta de X e Y é dada por:
+\[ f_{X,Y}(x,y) = \frac{1}{2} I_A(x,y) \text{ com } A = \{(x,y) \in \mathbb{R}^2; -1 \le x \le 1, 0 \le y \le 1\}. \]
+a. Calcule as marginais e verifique se X e Y são independentes. \\
+b. Obtenha a densidade condicional de Y dado que X > 0. \\
+c. Determine a função de distribuição conjunta entre X e Y.
+\end{quote}
+
+\subsection*{Resolução}
+
+\subsubsection*{a. Marginais e Independência}
+
+\paragraph{Cálculo da densidade marginal de X ($f_X(x)$):}
+Para encontrar a marginal de X, integramos a densidade conjunta em relação a $y$ sobre todo o seu suporte. O suporte de $y$ é o intervalo $[0, 1]$. A função só é não-nula para $x \in [-1, 1]$.
+
+Para $-1 \le x \le 1$:
+\[ f_X(x) = \int_{-\infty}^{\infty} f_{X,Y}(x,y) \,dy = \int_{0}^{1} \frac{1}{2} \,dy = \frac{1}{2} [y]_{0}^{1} = \frac{1}{2}(1-0) = \frac{1}{2}. \]
+Portanto, a densidade marginal de X é:
+\[ f_X(x) = \begin{cases} \frac{1}{2}, & \text{se } -1 \le x \le 1 \\ 0, & \text{caso contrário.} \end{cases} \]
+Isso significa que $X \sim U(-1, 1)$.
+
+\paragraph{Cálculo da densidade marginal de Y ($f_Y(y)$):}
+Similarmente, para encontrar a marginal de Y, integramos a densidade conjunta em relação a $x$. O suporte de $x$ é $[-1, 1]$. A função só é não-nula para $y \in [0, 1]$.
+
+Para $0 \le y \le 1$:
+\[ f_Y(y) = \int_{-\infty}^{\infty} f_{X,Y}(x,y) \,dx = \int_{-1}^{1} \frac{1}{2} \,dx = \frac{1}{2} [x]_{-1}^{1} = \frac{1}{2}(1 - (-1)) = \frac{1}{2}(2) = 1. \]
+Portanto, a densidade marginal de Y é:
+\[ f_Y(y) = \begin{cases} 1, & \text{se } 0 \le y \le 1 \\ 0, & \text{caso contrário.} \end{cases} \]
+Isso significa que $Y \sim U(0, 1)$.
+
+\paragraph{Verificação de Independência:}
+Duas variáveis aleatórias X e Y são independentes se e somente se $f_{X,Y}(x,y) = f_X(x)f_Y(y)$ para todo $(x,y)$.
+Vamos verificar:
+\[ f_X(x)f_Y(y) = \left(\frac{1}{2}\right)(1) = \frac{1}{2}. \]
+Este produto é válido para $-1 \le x \le 1$ e $0 \le y \le 1$, que é exatamente o domínio $A$ onde $f_{X,Y}(x,y)$ é não-nula. Como $f_{X,Y}(x,y) = \frac{1}{2}$, temos que $f_{X,Y}(x,y) = f_X(x)f_Y(y)$.
+
+\textbf{Conclusão:} Sim, X e Y são independentes.
+
+\subsubsection*{b. Densidade condicional de Y dado X > 0}
+A fórmula da densidade condicional é $f_{Y|X}(y|x) = \frac{f_{X,Y}(x,y)}{f_X(x)}$, para $f_X(x) > 0$.
+A condição é $X > 0$. No nosso caso, isso corresponde ao intervalo $0 < x \le 1$. Nesse intervalo, $f_X(x) = 1/2$.
+\[ f_{Y|X}(y|x) = \frac{1/2}{1/2} = 1. \]
+O suporte para $y$ continua sendo $0 \le y \le 1$.
+Portanto, a densidade condicional é:
+\[ f_{Y|X}(y|x) = \begin{cases} 1, & \text{se } 0 \le y \le 1 \text{ (para } 0 < x \le 1\text{)} \\ 0, & \text{caso contrário.} \end{cases} \]
+Isso mostra que, dado $X=x$, a distribuição de $Y$ ainda é $U(0,1)$, o que é esperado, já que são independentes.
+
+\subsubsection*{c. Função de Distribuição Conjunta (CDF)}
+A CDF é $F_{X,Y}(x,y) = \int_{-\infty}^{y} \int_{-\infty}^{x} f_{X,Y}(u,v) \,du \,dv$. Precisamos analisar por regiões.
+
+\begin{itemize}
+    \item Se $x < -1$ ou $y < 0$: A área de integração não contém o suporte, então $F_{X,Y}(x,y) = 0$.
+    \item Se $-1 \le x \le 1$ e $0 \le y \le 1$:
+    \[ F_{X,Y}(x,y) = \int_{0}^{y} \int_{-1}^{x} \frac{1}{2} \,du \,dv = \int_{0}^{y} \frac{1}{2}[u]_{-1}^{x} \,dv = \int_{0}^{y} \frac{x+1}{2} \,dv = \frac{x+1}{2}[v]_{0}^{y} = \frac{(x+1)y}{2}. \]
+    \item Se $x > 1$ e $0 \le y \le 1$: A integração em $u$ cobre todo o suporte de X, de $-1$ a $1$.
+    \[ F_{X,Y}(x,y) = \int_{0}^{y} \int_{-1}^{1} \frac{1}{2} \,du \,dv = \int_{0}^{y} 1 \,dv = y. \]
+    \item Se $-1 \le x \le 1$ e $y > 1$: A integração em $v$ cobre todo o suporte de Y, de $0$ a $1$.
+    \[ F_{X,Y}(x,y) = \int_{0}^{1} \int_{-1}^{x} \frac{1}{2} \,du \,dv = \int_{0}^{1} \frac{x+1}{2} \,dv = \frac{x+1}{2}. \]
+    \item Se $x > 1$ e $y > 1$: A integração cobre todo o suporte de A. A probabilidade total é 1.
+    \[ F_{X,Y}(x,y) = 1. \]
+\end{itemize}
+Resumindo em uma única função:
+\[ F_{X,Y}(x,y) = \begin{cases}
+0, & \text{se } x < -1 \text{ ou } y < 0 \\
+\frac{(x+1)y}{2}, & \text{se } -1 \le x \le 1, 0 \le y \le 1 \\
+y, & \text{se } x > 1, 0 \le y \le 1 \\
+\frac{x+1}{2}, & \text{se } -1 \le x \le 1, y > 1 \\
+1, & \text{se } x > 1, y > 1
+\end{cases} \]
+
+\pagebreak
+
+\section{Exercício 4}
+
+\begin{quote}
+Sejam X e Y com densidade conjunta:
+\[ f_{X,Y}(x,y) = \frac{1}{\pi} I_A(x,y) \text{ com } A = \{(x,y) \in \mathbb{R}^2; x^2+y^2 \le 1\}. \]
+a. Calcule as marginais e verifique se X e Y são independentes. \\
+b. Determine a densidade condicional de X dado que Y = 1/2.
+\end{quote}
+
+\subsection*{Resolução}
+
+\subsubsection*{a. Marginais e Independência}
+
+\paragraph{Cálculo da densidade marginal de X ($f_X(x)$):}
+Integramos a densidade conjunta em $y$. O suporte de $x$ é $[-1, 1]$. Para um $x$ fixo, os limites de $y$ são dados por $y^2 \le 1-x^2$, ou seja, $-\sqrt{1-x^2} \le y \le \sqrt{1-x^2}$.
+
+Para $-1 \le x \le 1$:
+\begin{align*}
+f_X(x) &= \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \frac{1}{\pi} \,dy = \frac{1}{\pi} [y]_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \\
+&= \frac{1}{\pi} (\sqrt{1-x^2} - (-\sqrt{1-x^2})) = \frac{2}{\pi}\sqrt{1-x^2}.
+\end{align*}
+A densidade marginal de X é:
+\[ f_X(x) = \begin{cases} \frac{2}{\pi}\sqrt{1-x^2}, & \text{se } -1 \le x \le 1 \\ 0, & \text{caso contrário.} \end{cases} \]
+
+\paragraph{Cálculo da densidade marginal de Y ($f_Y(y)$):}
+Por simetria do problema (o domínio é um círculo centrado na origem), a forma funcional da marginal de Y será a mesma da de X.
+\[ f_Y(y) = \begin{cases} \frac{2}{\pi}\sqrt{1-y^2}, & \text{se } -1 \le y \le 1 \\ 0, & \text{caso contrário.} \end{cases} \]
+
+\paragraph{Verificação de Independência:}
+Verificamos se $f_{X,Y}(x,y) = f_X(x)f_Y(y)$.
+\[ f_X(x)f_Y(y) = \left(\frac{2}{\pi}\sqrt{1-x^2}\right) \left(\frac{2}{\pi}\sqrt{1-y^2}\right) = \frac{4}{\pi^2}\sqrt{(1-x^2)(1-y^2)}. \]
+Claramente, $\frac{4}{\pi^2}\sqrt{(1-x^2)(1-y^2)} \neq \frac{1}{\pi}$.
+
+\textbf{Conclusão:} Não, X e Y não são independentes. Uma outra forma de ver isso é que o suporte da distribuição (um círculo) não é um retângulo, então o domínio de $y$ depende do valor de $x$.
+
+\subsubsection*{b. Densidade condicional de X dado Y = 1/2}
+Usamos a fórmula $f_{X|Y}(x|y) = \frac{f_{X,Y}(x,y)}{f_Y(y)}$, para $f_Y(y)>0$.
+Primeiro, calculamos o denominador para $y=1/2$:
+\[ f_Y(1/2) = \frac{2}{\pi}\sqrt{1-(1/2)^2} = \frac{2}{\pi}\sqrt{1-\frac{1}{4}} = \frac{2}{\pi}\sqrt{\frac{3}{4}} = \frac{2}{\pi}\frac{\sqrt{3}}{2} = \frac{\sqrt{3}}{\pi}. \]
+O numerador é $f_{X,Y}(x, 1/2) = 1/\pi$, mas precisamos encontrar o novo suporte para $x$.
+Dado $Y=1/2$, a condição $x^2+y^2 \le 1$ se torna $x^2 + (1/2)^2 \le 1 \implies x^2 \le 3/4$.
+Isso significa que $-\frac{\sqrt{3}}{2} \le x \le \frac{\sqrt{3}}{2}$.
+
+Agora, montamos a densidade condicional:
+\[ f_{X|Y}(x | 1/2) = \frac{f_{X,Y}(x, 1/2)}{f_Y(1/2)} = \frac{1/\pi}{\sqrt{3}/\pi} = \frac{1}{\sqrt{3}}. \]
+Portanto, a densidade condicional é:
+\[ f_{X|Y}(x | 1/2) = \begin{cases} \frac{1}{\sqrt{3}}, & \text{se } -\frac{\sqrt{3}}{2} \le x \le \frac{\sqrt{3}}{2} \\ 0, & \text{caso contrário.} \end{cases} \]
+Isso indica que a distribuição condicional de X, dado que Y=1/2, é uma Uniforme no intervalo $[-\sqrt{3}/2, \sqrt{3}/2]$.
+
+\pagebreak
+
+\section{Exercício 5}
+
+\begin{quote}
+A densidade conjunta de X e Y é dada por:
+\[ f_{X,Y}(x,y) = \begin{cases} \frac{1}{4}, & \text{se } -2 < x < 0, 0 < y < 1 \\ \frac{3}{4}, & \text{se } 0 \le x \le 1, -2 < y < 0 \\ 0, & \text{caso contrário.} \end{cases} \]
+a. Calcule as marginais e verifique se X e Y são independentes. \\
+b. Determine a função de distribuição conjunta entre X e Y. \\
+c. Obtenha a função de distribuição condicional de Y dado X = x.
+\end{quote}
+
+\subsection*{Resolução}
+\textit{Nota: Este exercício é um pouco mais complexo devido às regiões descontínuas. Vamos analisar as integrações com cuidado.}
+
+\subsubsection*{a. Marginais e Independência}
+
+\paragraph{Cálculo da densidade marginal de X ($f_X(x)$):}
+Precisamos considerar os diferentes intervalos de $x$.
+
+\begin{itemize}
+    \item Para $-2 < x < 0$: A densidade só é não-nula quando $0 < y < 1$.
+    \[ f_X(x) = \int_{0}^{1} \frac{1}{4} \,dy = \frac{1}{4}[y]_{0}^{1} = \frac{1}{4}. \]
+    \item Para $0 \le x \le 1$: A densidade só é não-nula quando $-2 < y < 0$.
+    \[ f_X(x) = \int_{-2}^{0} \frac{3}{4} \,dy = \frac{3}{4}[y]_{-2}^{0} = \frac{3}{4}(0 - (-2)) = \frac{3}{2}. \]
+\end{itemize}
+Juntando tudo, a marginal de X é:
+\[ f_X(x) = \begin{cases}
+1/4, & \text{se } -2 < x < 0 \\
+3/2, & \text{se } 0 \le x \le 1 \\
+0, & \text{caso contrário.}
+\end{cases} \]
+
+\paragraph{Cálculo da densidade marginal de Y ($f_Y(y)$):}
+Agora, consideramos os intervalos de $y$.
+
+\begin{itemize}
+    \item Para $-2 < y < 0$: A densidade só é não-nula quando $0 \le x \le 1$.
+    \[ f_Y(y) = \int_{0}^{1} \frac{3}{4} \,dx = \frac{3}{4}[x]_{0}^{1} = \frac{3}{4}. \]
+    \item Para $0 < y < 1$: A densidade só é não-nula quando $-2 < x < 0$.
+    \[ f_Y(y) = \int_{-2}^{0} \frac{1}{4} \,dx = \frac{1}{4}[x]_{-2}^{0} = \frac{1}{4}(0 - (-2)) = \frac{1}{2}. \]
+\end{itemize}
+Juntando tudo, a marginal de Y é:
+\[ f_Y(y) = \begin{cases}
+3/4, & \text{se } -2 < y < 0 \\
+1/2, & \text{se } 0 < y < 1 \\
+0, & \text{caso contrário.}
+\end{cases} \]
+
+\paragraph{Verificação de Independência:}
+Vamos testar um ponto. Seja $(x,y) = (-1, 0.5)$.
+$f_{X,Y}(-1, 0.5) = 1/4$.
+$f_X(-1) = 1/4$.
+$f_Y(0.5) = 1/2$.
+$f_X(-1)f_Y(0.5) = (1/4)(1/2) = 1/8 \neq 1/4$.
+
+\textbf{Conclusão:} Como $f_{X,Y}(x,y) \neq f_X(x)f_Y(y)$, as variáveis X e Y não são independentes.
+
+\textit{(As subseções b e c para este exercício são bastante longas por envolverem múltiplas regiões. Elas podem ser adicionadas se você desejar.)}
+
+\section{Exercício 6}
+
+\begin{quote}
+Seja $Y \sim \text{Poisson}(\lambda)$ e $X|(Y=n) \sim B(n, p)$. \\
+a. Calcule a função de probabilidade de X. \\
+b. Determine a função de probabilidade condicional de Y dado $X=x$.
+\end{quote}
+
+\subsection*{Resolução}
+Temos as seguintes funções de probabilidade (PMFs):
+\begin{itemize}
+    \item $P(Y=n) = \frac{e^{-\lambda}\lambda^n}{n!}$, para $n = 0, 1, 2, \dots$
+    \item $P(X=x | Y=n) = \binom{n}{x} p^x (1-p)^{n-x}$, para $x = 0, 1, \dots, n$.
+\end{itemize}
+
+\subsubsection*{a. Função de Probabilidade de X}
+Para encontrar a função de probabilidade marginal de $X$, usamos a Lei da Probabilidade Total, somando sobre todos os possíveis valores de $n$:
+\[ P(X=x) = \sum_{n=0}^{\infty} P(X=x, Y=n) = \sum_{n=0}^{\infty} P(X=x | Y=n) P(Y=n) \]
+A probabilidade $P(X=x|Y=n)$ só é não-nula se $n \ge x$. Portanto, a soma começa em $n=x$.
+\begin{align*}
+P(X=x) &= \sum_{n=x}^{\infty} \left[ \binom{n}{x} p^x (1-p)^{n-x} \right] \left[ \frac{e^{-\lambda}\lambda^n}{n!} \right] \\
+&= \sum_{n=x}^{\infty} \frac{n!}{x!(n-x)!} p^x (1-p)^{n-x} \frac{e^{-\lambda}\lambda^n}{n!} \\
+&= \sum_{n=x}^{\infty} \frac{1}{x!(n-x)!} p^x (1-p)^{n-x} e^{-\lambda}\lambda^n \\
+\end{align*}
+Agora, vamos reorganizar os termos, tirando da soma tudo que não depende de $n$:
+\begin{align*}
+P(X=x) &= \frac{e^{-\lambda} p^x}{x!} \sum_{n=x}^{\infty} \frac{1}{(n-x)!} (1-p)^{n-x} \lambda^n \\
+&= \frac{e^{-\lambda} p^x}{x!} \sum_{n=x}^{\infty} \frac{(1-p)^{n-x} \lambda^x \lambda^{n-x}}{(n-x)!} \quad (\text{pois } \lambda^n = \lambda^x \lambda^{n-x}) \\
+&= \frac{e^{-\lambda} (\lambda p)^x}{x!} \sum_{n=x}^{\infty} \frac{(\lambda(1-p))^{n-x}}{(n-x)!}
+\end{align*}
+Fazemos uma mudança de variável na soma, seja $k = n-x$. Quando $n=x$, $k=0$.
+\[ \sum_{k=0}^{\infty} \frac{(\lambda(1-p))^{k}}{k!} \]
+Esta é a série de Taylor para a função exponencial $e^z$ com $z = \lambda(1-p)$. Portanto, a soma é igual a $e^{\lambda(1-p)}$.
+Substituindo de volta:
+\begin{align*}
+P(X=x) &= \frac{e^{-\lambda} (\lambda p)^x}{x!} \cdot e^{\lambda(1-p)} \\
+&= \frac{(\lambda p)^x}{x!} e^{-\lambda + \lambda(1-p)} \\
+&= \frac{(\lambda p)^x}{x!} e^{-\lambda + \lambda - \lambda p} \\
+&= \frac{e^{-\lambda p} (\lambda p)^x}{x!}
+\end{align*}
+Esta é a função de probabilidade de uma distribuição de Poisson com parâmetro $\lambda p$.
+Portanto, $X \sim \text{Poisson}(\lambda p)$, para $x=0, 1, 2, \dots$.
+
+\subsubsection*{b. Função de Probabilidade Condicional de Y dado X=x}
+Usamos a definição de probabilidade condicional:
+\[ P(Y=n | X=x) = \frac{P(X=x, Y=n)}{P(X=x)} = \frac{P(X=x|Y=n)P(Y=n)}{P(X=x)} \]
+Esta probabilidade é não-nula apenas para $n \ge x$. Substituindo as funções que já conhecemos:
+\begin{align*}
+P(Y=n | X=x) &= \frac{ \left[ \binom{n}{x} p^x (1-p)^{n-x} \right] \left[ \frac{e^{-\lambda}\lambda^n}{n!} \right] }{ \frac{e^{-\lambda p} (\lambda p)^x}{x!} } \\
+&= \frac{ \frac{n!}{x!(n-x)!} p^x (1-p)^{n-x} \frac{e^{-\lambda}\lambda^n}{n!} }{ \frac{e^{-\lambda p} \lambda^x p^x}{x!} } \\
+&= \left( \frac{p^x (1-p)^{n-x} e^{-\lambda} \lambda^n}{x!(n-x)!} \right) \cdot \left( \frac{x!}{e^{-\lambda p} \lambda^x p^x} \right) \\
+&= \frac{(1-p)^{n-x} \lambda^{n-x} e^{-\lambda} e^{\lambda p}}{(n-x)!} \quad (\text{cancelando } x!, p^x, \lambda^x) \\
+&= \frac{(\lambda(1-p))^{n-x} e^{-(\lambda - \lambda p)}}{(n-x)!} \\
+&= \frac{e^{-\lambda(1-p)} (\lambda(1-p))^{n-x}}{(n-x)!}
+\end{align*}
+Esta é a PMF de uma variável aleatória $Z = Y-x$ que segue uma distribuição Poisson com parâmetro $\lambda(1-p)$. Ou seja, $Y-x | X=x \sim \text{Poisson}(\lambda(1-p))$.
+A função de probabilidade condicional de $Y$ dado $X=x$ é:
+\[ P(Y=n | X=x) = \frac{e^{-\lambda(1-p)} (\lambda(1-p))^{n-x}}{(n-x)!}, \quad \text{para } n = x, x+1, x+2, \dots \]
+\hfill \qedsymbol
+
+\section{Exercício 7}
+
+\begin{quote}
+Um milionário excêntrico, uma vez por semana, deixa seu escritório com X milhares de reais no bolso. Ao caminhar para sua casa vai distribuindo esse dinheiro aos eventuais pedintes que encontra. Admita que X tem densidade de probabilidade $f_X(x) = \frac{x}{8} I_{(0,4)}(x)$ e, também que o dinheiro que lhe resta ao chegar em casa, denotado por Y, tem probabilidade uniforme entre zero e o dinheiro com que deixou o escritório. Isto é, $Y|(X=x) \sim U_c[0,x]$. \\
+a. Calcule a densidade conjunta entre X e Y. \\
+b. Determine a densidade marginal de Y.
+\end{quote}
+
+\subsection*{Resolução}
+Primeiro, vamos formalizar as densidades de probabilidade (PDFs) dadas:
+\begin{itemize}
+    \item A densidade marginal de X é:
+    \[ f_X(x) = \begin{cases} \frac{x}{8}, & \text{se } 0 < x < 4 \\ 0, & \text{caso contrário.} \end{cases} \]
+    \item A densidade condicional de Y dado X=x é a de uma distribuição Uniforme Contínua em $[0,x]$. A fórmula da densidade uniforme em $[a,b]$ é $\frac{1}{b-a}$. Portanto:
+    \[ f_{Y|X}(y|x) = \begin{cases} \frac{1}{x-0} = \frac{1}{x}, & \text{se } 0 \le y \le x \\ 0, & \text{caso contrário.} \end{cases} \]
+\end{itemize}
+
+\subsubsection*{a. Densidade Conjunta entre X e Y}
+A densidade conjunta $f_{X,Y}(x,y)$ é encontrada multiplicando a densidade condicional pela densidade marginal:
+\[ f_{X,Y}(x,y) = f_{Y|X}(y|x) f_X(x) \]
+Para os valores onde as densidades são não-nulas, temos:
+\[ f_{X,Y}(x,y) = \left(\frac{1}{x}\right) \cdot \left(\frac{x}{8}\right) = \frac{1}{8} \]
+Agora, precisamos definir o suporte (a região) onde esta densidade é válida. As condições são:
+\begin{enumerate}
+    \item $0 < x < 4$ (do suporte de $f_X(x)$)
+    \item $0 \le y \le x$ (do suporte de $f_{Y|X}(y|x)$)
+\end{enumerate}
+Combinando estas condições, obtemos o suporte conjunto, que é uma região triangular no plano cartesiano. A densidade conjunta é:
+\[ f_{X,Y}(x,y) = \begin{cases} \frac{1}{8}, & \text{se } 0 < x < 4 \text{ e } 0 \le y \le x \\ 0, & \text{caso contrário.} \end{cases} \]
+
+\subsubsection*{b. Densidade Marginal de Y}
+Para encontrar a densidade marginal de Y, integramos a densidade conjunta em relação a $x$ sobre todo o seu suporte.
+\[ f_Y(y) = \int_{-\infty}^{\infty} f_{X,Y}(x,y) \,dx \]
+Os limites de integração para $x$ dependem do valor de $y$. Observando as condições do suporte conjunto ($0 < x < 4$ e $y \le x$), para um $y$ fixo, $x$ deve satisfazer $x \ge y$ e $x < 4$. Portanto, a integração em $x$ ocorrerá no intervalo $[y, 4)$.
+
+Além disso, para que o intervalo $[y, 4)$ seja válido, devemos ter $y < 4$. Como também temos $y \ge 0$, o suporte para a marginal de Y será $0 \le y < 4$.
+
+Para um $y$ nesse intervalo:
+\begin{align*}
+f_Y(y) &= \int_{y}^{4} \frac{1}{8} \,dx \\
+&= \frac{1}{8} [x]_{y}^{4} \\
+&= \frac{1}{8} (4 - y)
+\end{align*}
+Portanto, a densidade marginal de Y é:
+\[ f_Y(y) = \begin{cases} \frac{4-y}{8}, & \text{se } 0 \le y < 4 \\ 0, & \text{caso contrário.} \end{cases} \]
+\hfill \qedsymbol
+
+\section{Exercício 8}
+
+\begin{quote}
+A função de distribuição conjunta de $(X,Y)$ é dada por:
+\[ F_{X,Y}(x,y) = \begin{cases} 0, & \text{se } x < 0 \text{ ou } y < 0 \text{ ou } x \ge y; \\ \frac{2x^2y^2-x^4}{16}, & \text{se } 0 \le x < y, 0 \le y < 2; \\ \frac{8x^2-x^4}{16}, & \text{se } 0 \le x < 2, y \ge 2; \\ 1, & \text{se } x \ge 2, y \ge 2, x < y. \end{cases} \]
+a. Obtenha as funções de distribuição marginais de X e Y. \\
+b. Calcule a densidade conjunta entre X e Y. \\
+c. Calcule as densidades marginais de X e Y de duas maneiras diferentes.
+\end{quote}
+
+\subsection*{Resolução}
+
+\subsubsection*{b. Densidade Conjunta entre X e Y}
+
+(Vamos resolver o item \textbf{b} primeiro, pois ele nos dará uma função de densidade válida para trabalhar nos outros itens).
+A função de densidade de probabilidade (PDF) conjunta $f_{X,Y}(x,y)$ é obtida pela derivada parcial mista da função de distribuição (CDF):
+\[ f_{X,Y}(x,y) = \frac{\partial^2}{\partial y \partial x} F_{X,Y}(x,y) \]
+Vamos usar a expressão da CDF na região principal de variação, $0 \le x < y, 0 \le y < 2$:
+\[ F_{X,Y}(x,y) = \frac{2x^2y^2-x^4}{16} \]
+Primeiro, derivamos em relação a $x$:
+\[ \frac{\partial}{\partial x} F_{X,Y}(x,y) = \frac{4xy^2 - 4x^3}{16} = \frac{xy^2 - x^3}{4} \]
+Agora, derivamos o resultado em relação a $y$:
+\[ f_{X,Y}(x,y) = \frac{\partial}{\partial y} \left( \frac{xy^2 - x^3}{4} \right) = \frac{2xy}{4} = \frac{xy}{2} \]
+O suporte para esta densidade é a região $0 \le x \le y$ e $0 \le y \le 2$ (que é o mesmo que $0 \le x \le 2$ e $x \le y \le 2$). A densidade conjunta é:
+\[ f_{X,Y}(x,y) = \begin{cases} \frac{xy}{2}, & \text{se } 0 \le x \le 2, x \le y \le 2 \\ 0, & \text{caso contrário.} \end{cases} \]
+
+\subsubsection*{a. Funções de Distribuição Marginais (CDFs)}
+
+\paragraph{CDF Marginal de X ($F_X(x)$):}
+Usamos a definição $F_X(x) = \lim_{y\to\infty} F_{X,Y}(x,y)$.
+\begin{itemize}
+    \item Se $x < 0$: $F_X(x) = \lim_{y\to\infty} 0 = 0$.
+    \item Se $0 \le x < 2$: Quando $y \to \infty$, caímos na região $y \ge 2$, então usamos a terceira expressão da CDF.
+    \[ F_X(x) = \lim_{y\to\infty} \frac{8x^2-x^4}{16} = \frac{8x^2-x^4}{16}. \]
+    \item Se $x \ge 2$: Quando $y \to \infty$, caímos na região $x \ge 2, y \ge 2, x < y$.
+    \[ F_X(x) = \lim_{y\to\infty} 1 = 1. \]
+\end{itemize}
+Juntando as partes:
+\[ F_X(x) = \begin{cases} 0, & \text{se } x < 0 \\ \frac{8x^2-x^4}{16}, & \text{se } 0 \le x < 2 \\ 1, & \text{se } x \ge 2. \end{cases} \]
+
+\paragraph{CDF Marginal de Y ($F_Y(y)$):}
+Calculamos $F_Y(y)$ integrando sua densidade marginal $f_Y(t)$ (que será calculada no item \textbf{c}).
+Sabendo que $f_Y(y) = y^3/4$ para $0 \le y \le 2$:
+\[ F_Y(y) = \int_{-\infty}^{y} f_Y(t) \,dt \]
+\begin{itemize}
+    \item Se $y < 0$: $F_Y(y) = 0$.
+    \item Se $0 \le y \le 2$:
+    \[ F_Y(y) = \int_0^y \frac{t^3}{4} \,dt = \frac{1}{4} \left[ \frac{t^4}{4} \right]_0^y = \frac{y^4}{16}. \]
+    \item Se $y > 2$:
+    \[ F_Y(y) = \int_0^2 \frac{t^3}{4} \,dt = \frac{1}{4} \left[ \frac{t^4}{4} \right]_0^2 = \frac{16}{16} = 1. \]
+\end{itemize}
+Juntando as partes:
+\[ F_Y(y) = \begin{cases} 0, & \text{se } y < 0 \\ \frac{y^4}{16}, & \text{se } 0 \le y \le 2 \\ 1, & \text{se } y > 2. \end{cases} \]
+
+\subsubsection*{c. Densidades Marginais de X e Y (PDFs)}
+
+\paragraph{Primeira Maneira: Integrando a Densidade Conjunta}
+\begin{itemize}
+    \item \textbf{PDF Marginal de X:} Integramos $f_{X,Y}(x,y)$ em relação a $y$. Para um $x$ fixo no intervalo $[0,2]$, $y$ varia de $x$ até $2$.
+    \[ f_X(x) = \int_x^2 \frac{xy}{2} \,dy = \frac{x}{2} \left[ \frac{y^2}{2} \right]_x^2 = \frac{x}{4} (4 - x^2) = x - \frac{x^3}{4}, \quad \text{para } 0 \le x \le 2. \]
+    \item \textbf{PDF Marginal de Y:} Integramos $f_{X,Y}(x,y)$ em relação a $x$. Para um $y$ fixo no intervalo $[0,2]$, $x$ varia de $0$ até $y$.
+    \[ f_Y(y) = \int_0^y \frac{xy}{2} \,dx = \frac{y}{2} \left[ \frac{x^2}{2} \right]_0^y = \frac{y}{4} (y^2 - 0) = \frac{y^3}{4}, \quad \text{para } 0 \le y \le 2. \]
+\end{itemize}
+
+\paragraph{Segunda Maneira: Derivando as CDFs Marginais}
+\begin{itemize}
+    \item \textbf{PDF Marginal de X:} Derivamos $F_X(x)$ em relação a $x$ para $0 \le x < 2$.
+    \[ f_X(x) = \frac{d}{dx} F_X(x) = \frac{d}{dx} \left( \frac{8x^2-x^4}{16} \right) = \frac{16x - 4x^3}{16} = x - \frac{x^3}{4}. \]
+    \item \textbf{PDF Marginal de Y:} Derivamos $F_Y(y)$ em relação a $y$ para $0 \le y \le 2$.
+    \[ f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} \left( \frac{y^4}{16} \right) = \frac{4y^3}{16} = \frac{y^3}{4}. \]
+\end{itemize}
+Ambos os métodos produzem os mesmos resultados, como esperado. \hfill \qedsymbol
+
+\section{Exercício 9}
+
+\begin{quote}
+Considere a função:
+\[ f_{X|Y}(x|y) = \begin{cases} \frac{y^x e^{-y}}{x!}, & \text{se } x = 0, 1, \dots \text{ e } y > 0; \\ 0, & \text{caso contrário.} \end{cases} \]
+a. Mostre que, para cada y fixado, $f(\cdot|y)$ é uma função de probabilidade. \\
+b. Determine a conjunta de X e Y se $Y \sim \text{Exp}(1)$. \\
+c. Nas condições de (b), obtenha a marginal de X.
+\end{quote}
+
+\subsection*{Resolução}
+
+\subsubsection*{a. Verificação da Função de Probabilidade}
+Para que $f_{X|Y}(x|y)$ seja uma função de massa de probabilidade (PMF) para um $y>0$ fixo, ela deve satisfazer duas condições:
+\begin{enumerate}
+    \item $f_{X|Y}(x|y) \ge 0$ para todos os valores de $x$.
+    \item $\sum_{x} f_{X|Y}(x|y) = 1$.
+\end{enumerate}
+
+\paragraph{1. Não-negatividade:}
+Para $y > 0$ e $x \in \{0, 1, 2, \dots\}$, temos que $y^x \ge 0$, $e^{-y} > 0$ e $x! \ge 1$. O quociente de termos não-negativos é não-negativo, então $f_{X|Y}(x|y) \ge 0$. A condição é satisfeita.
+
+\paragraph{2. Soma igual a 1:}
+Somamos a função sobre todos os possíveis valores de $x$:
+\begin{align*}
+\sum_{x=0}^{\infty} f_{X|Y}(x|y) &= \sum_{x=0}^{\infty} \frac{y^x e^{-y}}{x!} \\
+&= e^{-y} \sum_{x=0}^{\infty} \frac{y^x}{x!} \quad (\text{pois } e^{-y} \text{ não depende de } x)
+\end{align*}
+A soma $\sum_{x=0}^{\infty} \frac{y^x}{x!}$ é a série de Taylor para a função exponencial $e^y$. Portanto:
+\[ \sum_{x=0}^{\infty} f_{X|Y}(x|y) = e^{-y} \cdot e^y = e^0 = 1. \]
+A segunda condição também é satisfeita.
+
+\textbf{Conclusão:} Para cada $y>0$ fixo, $f_{X|Y}(x|y)$ é uma função de probabilidade válida. De fato, é a PMF de uma distribuição de \textbf{Poisson} com parâmetro $\lambda=y$.
+
+\subsubsection*{b. Função de Densidade Conjunta}
+A função de densidade/massa de probabilidade conjunta é dada por $f_{X,Y}(x,y) = f_{X|Y}(x|y) f_Y(y)$.
+É nos dado que $Y \sim \text{Exp}(1)$, cuja função de densidade de probabilidade (PDF) é:
+\[ f_Y(y) = \begin{cases} e^{-y}, & \text{se } y > 0 \\ 0, & \text{caso contrário.} \end{cases} \]
+Agora, multiplicamos as funções para obter a conjunta, válida no suporte $x \in \{0, 1, \dots\}$ e $y > 0$:
+\begin{align*}
+f_{X,Y}(x,y) &= \left( \frac{y^x e^{-y}}{x!} \right) \cdot (e^{-y}) \\
+&= \frac{y^x e^{-2y}}{x!}
+\end{align*}
+Portanto, a função conjunta é:
+\[ f_{X,Y}(x,y) = \begin{cases} \frac{y^x e^{-2y}}{x!}, & \text{se } x \in \{0, 1, \dots\} \text{ e } y > 0 \\ 0, & \text{caso contrário.} \end{cases} \]
+
+\subsubsection*{c. Função de Probabilidade Marginal de X}
+Para obter a PMF marginal de X, $P(X=x)$, integramos a função conjunta em relação a $y$ sobre todo o seu suporte, que é $(0, \infty)$.
+\begin{align*}
+P(X=x) &= \int_{0}^{\infty} f_{X,Y}(x,y) \,dy \\
+&= \int_{0}^{\infty} \frac{y^x e^{-2y}}{x!} \,dy \\
+&= \frac{1}{x!} \int_{0}^{\infty} y^x e^{-2y} \,dy
+\end{align*}
+A integral tem a forma de uma função Gamma. A função Gamma é definida como $\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt$.
+Para resolver nossa integral, fazemos a substituição $t = 2y$, de onde $y = t/2$ e $dy = dt/2$. Os limites de integração permanecem os mesmos.
+\begin{align*}
+\int_{0}^{\infty} y^x e^{-2y} \,dy &= \int_{0}^{\infty} \left(\frac{t}{2}\right)^x e^{-t} \left(\frac{dt}{2}\right) \\
+&= \int_{0}^{\infty} \frac{t^x}{2^x} e^{-t} \frac{1}{2} \,dt \\
+&= \frac{1}{2^{x+1}} \int_{0}^{\infty} t^x e^{-t} \,dt
+\end{align*}
+A integral $\int_{0}^{\infty} t^x e^{-t} \,dt$ é a definição de $\Gamma(x+1)$. Para valores inteiros de $x$, sabemos que $\Gamma(x+1) = x!$.
+Portanto, o valor da integral é $\frac{1}{2^{x+1}} \cdot x!$.
+
+Substituindo este resultado de volta na expressão para $P(X=x)$:
+\[ P(X=x) = \frac{1}{x!} \left( \frac{x!}{2^{x+1}} \right) = \frac{1}{2^{x+1}} = \left(\frac{1}{2}\right)^{x+1} \]
+A função de probabilidade marginal de X é:
+\[ P(X=x) = \left(\frac{1}{2}\right)^{x+1}, \quad \text{para } x=0, 1, 2, \dots \]
+Esta é a PMF de uma distribuição \textbf{Geométrica} com parâmetro de sucesso $p=1/2$.
+\hfill \qedsymbol
+
+\section{Exercício 10}
+
+\begin{quote}
+Seja $F(x,y)$ a função mista de distribuição conjunta de $(X,Y)$. Suponha que $F$ corresponde à densidade Uniforme Contínua sobre o intervalo (0, 1) do eixo y de $\mathbb{R}^2$. \\
+a. Obtenha $F$. \\
+b. Mostre que $F_X(x)$ é contínua exceto se $x = 0$. \\
+c. Prove que $F_Y(y)$ é contínua. \\
+d. Você diria que $(X,Y)$ é contínua se, e só se, sua função de distribuição conjunta induz probabilidade zero a cada ponto $(x,y) \in \mathbb{R}^2$?
+\end{quote}
+
+\subsection*{Resolução}
+
+\paragraph{Interpretação:} O enunciado descreve uma distribuição onde toda a massa de probabilidade está no segmento de linha $\{ (x,y) : x=0, 0 < y < 1 \}$. Isso significa que a variável aleatória $X$ é discreta e assume o valor 0 com probabilidade 1, i.e., $P(X=0)=1$. A variável $Y$, condicionada a $X=0$, segue uma distribuição Uniforme em $(0,1)$.
+
+\subsubsection*{a. Obtenha $F$}
+A função de distribuição conjunta (CDF) é $F(x,y) = P(X \le x, Y \le y)$.
+\begin{itemize}
+    \item Se $x < 0$: O evento $X \le x$ é impossível, pois $X$ é sempre 0. Portanto, $F(x,y)=0$.
+    \item Se $x \ge 0$: O evento $X \le x$ é certo ($P(X \le x)=1$). Então, $F(x,y) = P(Y \le y | X=0)$. A CDF de uma $U(0,1)$ é $y$ para $y \in [0,1]$. Assim:
+    \begin{itemize}
+        \item Se $y < 0$, $F(x,y) = 0$.
+        \item Se $0 \le y \le 1$, $F(x,y) = y$.
+        \item Se $y > 1$, $F(x,y) = 1$.
+    \end{itemize}
+\end{itemize}
+Combinando tudo, a CDF conjunta é:
+\[ F(x,y) = \begin{cases} 0, & \text{se } x < 0 \text{ ou } y < 0 \\ y, & \text{se } x \ge 0 \text{ e } 0 \le y \le 1 \\ 1, & \text{se } x \ge 0 \text{ e } y > 1 \end{cases} \]
+
+\subsubsection*{b. Mostre que $F_X(x)$ é contínua exceto se $x=0$}
+A CDF marginal de $X$ é $F_X(x) = \lim_{y\to\infty} F(x,y)$.
+\begin{itemize}
+    \item Se $x < 0$: $F_X(x) = \lim_{y\to\infty} 0 = 0$.
+    \item Se $x \ge 0$: Quando $y\to\infty$, caímos no caso $y>1$, então $F(x,y)=1$.
+    \[ F_X(x) = \lim_{y\to\infty} 1 = 1. \]
+\end{itemize}
+A CDF marginal de X é:
+\[ F_X(x) = \begin{cases} 0, & \text{se } x < 0 \\ 1, & \text{se } x \ge 0 \end{cases} \]
+Esta função é constante (e portanto contínua) para $x < 0$ e $x > 0$. No ponto $x=0$:
+\begin{itemize}
+    \item $\lim_{x\to 0^-} F_X(x) = \lim_{x\to 0^-} 0 = 0$.
+    \item $\lim_{x\to 0^+} F_X(x) = \lim_{x\to 0^+} 1 = 1$.
+\end{itemize}
+Como os limites laterais são diferentes, $F_X(x)$ é descontínua em $x=0$.
+
+\subsubsection*{c. Prove que $F_Y(y)$ é contínua}
+A CDF marginal de $Y$ é $F_Y(y) = \lim_{x\to\infty} F(x,y)$.
+Quando $x\to\infty$, caímos no caso $x \ge 0$.
+\begin{itemize}
+    \item Se $y < 0$: $F_Y(y) = \lim_{x\to\infty} 0 = 0$.
+    \item Se $0 \le y \le 1$: $F_Y(y) = \lim_{x\to\infty} y = y$.
+    \item Se $y > 1$: $F_Y(y) = \lim_{x\to\infty} 1 = 1$.
+\end{itemize}
+A CDF marginal de Y é:
+\[ F_Y(y) = \begin{cases} 0, & \text{se } y < 0 \\ y, & \text{se } 0 \le y \le 1 \\ 1, & \text{se } y > 1 \end{cases} \]
+Esta é a CDF de uma distribuição Uniforme(0,1). A função é contínua em toda a reta real. Nos pontos de junção:
+\begin{itemize}
+    \item Em $y=0$: $\lim_{y\to 0^-} 0 = 0$ e $\lim_{y\to 0^+} y = 0$. $F_Y(0)=0$. É contínua.
+    \item Em $y=1$: $\lim_{y\to 1^-} y = 1$ e $\lim_{y\to 1^+} 1 = 1$. $F_Y(1)=1$. É contínua.
+\end{itemize}
+Portanto, $F_Y(y)$ é contínua.
+
+\subsubsection*{d. Análise da afirmação}
+A afirmação é: " $(X,Y)$ é contínua se, e só se, sua função de distribuição conjunta induz probabilidade zero a cada ponto $(x,y) \in \mathbb{R}^2$ ".
+
+Analisemos as duas implicações da afirmação "se, e só se" (se e somente se):
+
+\paragraph{1. (=>) Se $(X,Y)$ é contínua, então $P(X=x, Y=y)=0$ para todo $(x,y)$.}
+Esta afirmação é \textbf{verdadeira}. Por definição, uma variável aleatória vetorial contínua possui uma função de densidade de probabilidade $f(x,y)$, e a probabilidade de qualquer ponto específico é zero.
+
+\paragraph{2. (<=) Se $P(X=x, Y=y)=0$ para todo $(x,y)$, então $(X,Y)$ é contínua.}
+Esta afirmação é \textbf{falsa}. Uma variável aleatória vetorial é contínua se, e somente se, sua CDF $F(x,y)$ é uma função contínua. A condição $P(X=x, Y=y)=0$ não é suficiente para garantir a continuidade da CDF.
+
+O par $(X,Y)$ deste próprio exercício é um contraexemplo perfeito:
+\begin{itemize}
+    \item A probabilidade de qualquer ponto é zero: $P(X=x, Y=y) = 0$ para todo $(x,y)$. Se $x \ne 0$, a probabilidade é 0. Se $x=0$, a probabilidade é 0 porque $Y$ é uma variável contínua (a probabilidade de $Y$ assumir um valor específico $y$ é nula).
+    \item No entanto, a distribuição de $(X,Y)$ \textbf{não é contínua}. Como vimos no item (b), a CDF marginal $F_X(x)$ tem uma descontinuidade (um salto) em $x=0$. Isso implica que a CDF conjunta $F(x,y)$ também é descontínua ao longo da linha $x=0$.
+\end{itemize}
+
+\textbf{Conclusão:} Como a segunda implicação é falsa, a afirmação "se, e só se" é \textbf{falsa}. A condição correta para uma distribuição ser contínua é a continuidade de sua função de distribuição acumulada. \hfill \qedsymbol
+
+\end{document}

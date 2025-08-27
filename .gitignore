@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# Ignorar pasta de backup e todo o seu conteúdo
+backup/
