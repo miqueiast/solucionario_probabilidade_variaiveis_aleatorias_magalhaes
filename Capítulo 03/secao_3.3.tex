@@ -1,0 +1,223 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Exercícios do Livro Magalhães - Capítulo 03\\\large{Seção 3.3 e Outros}}
+\author{Aluno: Miqueias T}
+\date{27 de Agosto de 2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introdução}
+Este documento apresenta a resolução de exercícios selecionados sobre transformações de variáveis aleatórias. Os problemas abordam a determinação de funções de distribuição e densidade para novas variáveis que são funções de outras, bem como a derivação de distribuições resultantes de somas e diferenças de variáveis aleatórias independentes.
+
+\section{Exercício 1 (Seção 3.3)}
+
+\begin{quote}
+Seja X uma variável aleatória com função de distribuição F e sejam a e b constantes reais. Determine a função de distribuição das seguintes variáveis aleatórias: \\
+a. $-X$. \\
+b. $aX + b$, com $a \ne 0$. \\
+d. Comente as diferenças nas soluções se X é discreta ou contínua.
+\end{quote}
+
+\subsection*{Resolução}
+
+Seja $F_X(x) = P(X \le x)$ a função de distribuição acumulada (FDA) de X.
+
+\subsubsection*{a. FDA de Y = -X}
+A função de distribuição de Y, $F_Y(y)$, é dada por:
+\begin{align*}
+F_Y(y) &= P(Y \le y) = P(-X \le y) \\
+&= P(X \ge -y) \\
+&= 1 - P(X < -y)
+\end{align*}
+Aqui, precisamos considerar se X é contínua ou discreta.
+\begin{itemize}
+    \item Se X é \textbf{contínua}, $P(X = k) = 0$ para todo $k$. Portanto, $P(X < -y) = P(X \le -y) = F_X(-y)$.
+    \[ F_Y(y) = 1 - F_X(-y). \]
+    \item Se X é \textbf{discreta}, $P(X < -y)$ pode não ser igual a $F_X(-y)$. A relação correta é $P(X < -y) = P(X \le -y) - P(X = -y) = F_X(-y) - P(X = -y)$.
+    \[ F_Y(y) = 1 - F_X(-y) + P(X = -y). \]
+\end{itemize}
+
+\subsubsection*{b. FDA de Z = aX + b}
+Vamos analisar os casos para o sinal de $a$.
+
+\paragraph{Caso 1: $a > 0$}
+\begin{align*}
+F_Z(z) &= P(Z \le z) = P(aX + b \le z) \\
+&= P(aX \le z-b) \\
+&= P\left(X \le \frac{z-b}{a}\right) \\
+&= F_X\left(\frac{z-b}{a}\right)
+\end{align*}
+Neste caso, a solução é a mesma para X contínua ou discreta.
+
+\paragraph{Caso 2: $a < 0$}
+A desigualdade inverte ao dividir por $a$:
+\begin{align*}
+F_Z(z) &= P(Z \le z) = P(aX + b \le z) \\
+&= P\left(X \ge \frac{z-b}{a}\right) \\
+&= 1 - P\left(X < \frac{z-b}{a}\right)
+\end{align*}
+Similar ao item (a), a solução depende da natureza de X.
+\begin{itemize}
+    \item Se X é \textbf{contínua}:
+    \[ F_Z(z) = 1 - F_X\left(\frac{z-b}{a}\right). \]
+    \item Se X é \textbf{discreta}:
+    \[ F_Z(z) = 1 - F_X\left(\frac{z-b}{a}\right) + P\left(X = \frac{z-b}{a}\right). \]
+\end{itemize}
+
+\subsubsection*{d. Diferenças entre caso discreto e contínuo}
+A principal diferença reside no tratamento de desigualdades estritas ($<$) e não estritas ($\le$). Para uma variável aleatória contínua, a probabilidade de ela assumir um valor pontual específico é zero, ou seja, $P(X=k)=0$. Isso simplifica as manipulações, pois $P(X < k) = P(X \le k)$.
+Para uma variável aleatória discreta, a probabilidade em um ponto, $P(X=k)$, pode ser positiva. Portanto, é crucial distinguir entre $P(X < k)$ e $P(X \le k)$, pois $P(X \le k) = P(X < k) + P(X=k)$. Essa distinção afeta os cálculos da FDA quando uma transformação inverte a ordem da desigualdade, como vimos nos casos de $Y=-X$ e $Z=aX+b$ com $a<0$.
+\hfill \qedsymbol
+
+\pagebreak
+
+\section{Exercício 4 (Seção 3.3)}
+
+\begin{quote}
+Sejam X e Y $\sim N(0,1)$, independentes. Obtenha a densidade de $2X+Y$.
+\end{quote}
+
+\subsection*{Resolução}
+
+Seja $Z = 2X+Y$. Como X e Y são variáveis aleatórias normais e independentes, qualquer combinação linear delas também resultará em uma variável aleatória normal. Para caracterizar a distribuição de Z, precisamos apenas de sua média e variância.
+
+\paragraph{Cálculo da Média de Z:}
+A esperança de Z é:
+\begin{align*}
+E[Z] &= E[2X+Y] \\
+&= E[2X] + E[Y] \quad (\text{pela linearidade da esperança}) \\
+&= 2E[X] + E[Y]
+\end{align*}
+Como $X \sim N(0,1)$ e $Y \sim N(0,1)$, temos que $E[X]=0$ e $E[Y]=0$.
+\[ E[Z] = 2(0) + 0 = 0. \]
+
+\paragraph{Cálculo da Variância de Z:}
+A variância de Z é:
+\begin{align*}
+Var(Z) &= Var(2X+Y)
+\end{align*}
+Como X e Y são independentes, a variância da soma é a soma das variâncias:
+\begin{align*}
+Var(Z) &= Var(2X) + Var(Y) \\
+&= 2^2 Var(X) + Var(Y) \quad (\text{usando a propriedade } Var(aX) = a^2Var(X))
+\end{align*}
+Como $X \sim N(0,1)$ e $Y \sim N(0,1)$, temos que $Var(X)=1$ e $Var(Y)=1$.
+\[ Var(Z) = 4(1) + 1 = 5. \]
+
+\paragraph{Conclusão:}
+A variável aleatória Z segue uma distribuição Normal com média 0 e variância 5. Escrevemos isso como $Z \sim N(0,5)$.
+A função de densidade de probabilidade (PDF) de Z é dada pela fórmula da distribuição Normal $N(\mu, \sigma^2)$, onde $\mu=0$ e $\sigma^2=5$:
+\[ f_Z(z) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(z-\mu)^2}{2\sigma^2}} = \frac{1}{\sqrt{10\pi}} e^{-\frac{z^2}{10}}, \quad \text{para } z \in \mathbb{R}. \]
+\hfill \qedsymbol
+
+\pagebreak
+
+\section{Exercício 6 (Seção 3.3)}
+
+\begin{quote}
+Sejam X e Y $\sim Exp(1)$, independentes. Obtenha a densidade de $X-Y$.
+\end{quote}
+
+\subsection*{Resolução}
+Seja $Z = X-Y$. As densidades de X e Y são $f_X(x) = e^{-x}$ para $x>0$ e $f_Y(y) = e^{-y}$ para $y>0$. Para encontrar a densidade de $Z$, usamos a fórmula da convolução para a diferença de duas variáveis aleatórias independentes:
+\[ f_Z(z) = \int_{-\infty}^{\infty} f_X(v) f_Y(v-z) \,dv \]
+O integrando $f_X(v)f_Y(v-z) = e^{-v}e^{-(v-z)}$ é não-nulo apenas quando as condições dos suportes de X e Y são atendidas, ou seja, $v > 0$ e $v-z > 0 \implies v > z$.
+
+Vamos analisar a integral para dois casos de $z$.
+
+\paragraph{Caso 1: $z \ge 0$}
+Neste caso, a condição $v>z$ já implica $v>0$. Portanto, o intervalo de integração é de $z$ a $\infty$.
+\begin{align*}
+f_Z(z) &= \int_{z}^{\infty} e^{-v} e^{-(v-z)} \,dv \\
+&= \int_{z}^{\infty} e^{-2v+z} \,dv \\
+&= e^z \int_{z}^{\infty} e^{-2v} \,dv \\
+&= e^z \left[ -\frac{1}{2}e^{-2v} \right]_{v=z}^{\infty} \\
+&= e^z \left( 0 - \left(-\frac{1}{2}e^{-2z}\right) \right) \\
+&= \frac{1}{2} e^{z} e^{-2z} = \frac{1}{2} e^{-z}
+\end{align*}
+
+\paragraph{Caso 2: $z < 0$}
+Neste caso, as duas condições $v>0$ e $v>z$ devem ser satisfeitas. Como $z$ é negativo, a condição mais restritiva é $v>0$. O intervalo de integração é de $0$ a $\infty$.
+\begin{align*}
+f_Z(z) &= \int_{0}^{\infty} e^{-v} e^{-(v-z)} \,dv \\
+&= \int_{0}^{\infty} e^{-2v+z} \,dv \\
+&= e^z \int_{0}^{\infty} e^{-2v} \,dv \\
+&= e^z \left[ -\frac{1}{2}e^{-2v} \right]_{v=0}^{\infty} \\
+&= e^z \left( 0 - \left(-\frac{1}{2}e^{0}\right) \right) \\
+&= \frac{1}{2} e^z
+\end{align*}
+
+\paragraph{Conclusão:}
+Podemos combinar os dois resultados usando o valor absoluto. Para $z \ge 0$, temos $e^{-z} = e^{-|z|}$. Para $z < 0$, temos $e^z = e^{-(-z)} = e^{-|z|}$.
+Portanto, a densidade de $Z=X-Y$ é:
+\[ f_Z(z) = \frac{1}{2} e^{-|z|}, \quad \text{para } z \in \mathbb{R}. \]
+Esta é a função de densidade da distribuição de Laplace com parâmetros $\mu=0$ e $b=1$. \hfill \qedsymbol
+
+\pagebreak
+
+\section{Exercício 10 (Outra Seção)}
+
+\begin{quote}
+Sendo $X \sim N(0,1)$, verifique que $X^2$ tem distribuição Qui-quadrado com 1 grau de liberdade usando: \\
+a. O método direto. \\
+b. O método do Jacobiano.
+\end{quote}
+
+\subsection*{Resolução}
+Seja $Y = X^2$. A distribuição Qui-quadrado com 1 grau de liberdade ($\chi^2_1$) é um caso especial da distribuição Gama, com parâmetros $\alpha=1/2$ e $\beta=1/2$. Sua PDF é $f(y) = \frac{1}{\sqrt{2\pi y}} e^{-y/2}$ para $y>0$. Nosso objetivo é mostrar que a PDF de Y é essa.
+
+\subsubsection*{a. O método direto (via Função de Distribuição)}
+Primeiro, encontramos a FDA de Y, $F_Y(y) = P(Y \le y)$.
+\begin{itemize}
+    \item Se $y < 0$, é impossível que $X^2 \le y$, então $F_Y(y) = 0$.
+    \item Se $y \ge 0$:
+    \begin{align*}
+        F_Y(y) &= P(X^2 \le y) \\
+        &= P(-\sqrt{y} \le X \le \sqrt{y}) \\
+        &= P(X \le \sqrt{y}) - P(X \le -\sqrt{y}) \\
+        &= F_X(\sqrt{y}) - F_X(-\sqrt{y})
+    \end{align*}
+\end{itemize}
+A PDF de Y é a derivada da sua FDA: $f_Y(y) = F_Y'(y)$. Usando a regra da cadeia e sabendo que $F_X'(x) = f_X(x)$:
+\begin{align*}
+    f_Y(y) &= \frac{d}{dy} [F_X(\sqrt{y}) - F_X(-\sqrt{y})] \\
+    &= f_X(\sqrt{y}) \cdot \frac{1}{2\sqrt{y}} - f_X(-\sqrt{y}) \cdot \left(-\frac{1}{2\sqrt{y}}\right) \\
+    &= \frac{1}{2\sqrt{y}} [f_X(\sqrt{y}) + f_X(-\sqrt{y})]
+\end{align*}
+A PDF de $X \sim N(0,1)$ é $f_X(x) = \frac{1}{\sqrt{2\pi}}e^{-x^2/2}$. Note que ela é uma função par, ou seja, $f_X(x)=f_X(-x)$. Portanto, $f_X(\sqrt{y}) = f_X(-\sqrt{y})$.
+\begin{align*}
+    f_Y(y) &= \frac{1}{2\sqrt{y}} [2 \cdot f_X(\sqrt{y})] = \frac{f_X(\sqrt{y})}{\sqrt{y}} \\
+    &= \frac{1}{\sqrt{y}} \left( \frac{1}{\sqrt{2\pi}} e^{-(\sqrt{y})^2/2} \right) \\
+    &= \frac{1}{\sqrt{2\pi y}} e^{-y/2}, \quad \text{para } y > 0.
+\end{align*}
+Esta é exatamente a PDF de uma distribuição $\chi^2_1$.
+
+\subsubsection*{b. O método do Jacobiano (Transformação de Variáveis)}
+A transformação é $y=g(x)=x^2$. Esta função não é injetora para $x \in \mathbb{R}$. Podemos dividir o domínio de X em duas partes: $(-\infty, 0)$ e $(0, \infty)$.
+As funções inversas são $x_1 = -\sqrt{y}$ e $x_2 = \sqrt{y}$.
+A fórmula de transformação de densidade é $f_Y(y) = \sum_{i=1}^{2} f_X(x_i) \left| \frac{dx_i}{dy} \right|$.
+Calculamos os Jacobianos (derivadas, no caso univariado):
+\[ \frac{dx_1}{dy} = -\frac{1}{2\sqrt{y}} \quad \text{e} \quad \frac{dx_2}{dy} = \frac{1}{2\sqrt{y}} \]
+Agora aplicamos a fórmula para $y>0$:
+\begin{align*}
+    f_Y(y) &= f_X(-\sqrt{y}) \left| -\frac{1}{2\sqrt{y}} \right| + f_X(\sqrt{y}) \left| \frac{1}{2\sqrt{y}} \right| \\
+    &= f_X(-\sqrt{y}) \frac{1}{2\sqrt{y}} + f_X(\sqrt{y}) \frac{1}{2\sqrt{y}}
+\end{align*}
+Como $f_X(x)$ é simétrica em torno de zero, $f_X(-\sqrt{y}) = f_X(\sqrt{y}) = \frac{1}{\sqrt{2\pi}}e^{-y/2}$.
+\begin{align*}
+    f_Y(y) &= \left( \frac{1}{\sqrt{2\pi}}e^{-y/2} \right) \frac{1}{2\sqrt{y}} + \left( \frac{1}{\sqrt{2\pi}}e^{-y/2} \right) \frac{1}{2\sqrt{y}} \\
+    &= 2 \cdot \frac{1}{\sqrt{2\pi}}e^{-y/2} \frac{1}{2\sqrt{y}} \\
+    &= \frac{1}{\sqrt{2\pi y}} e^{-y/2}, \quad \text{para } y > 0.
+\end{align*}
+Ambos os métodos levam à mesma conclusão: $X^2 \sim \chi^2_1$. \hfill \qedsymbol
+
+\end{document}
