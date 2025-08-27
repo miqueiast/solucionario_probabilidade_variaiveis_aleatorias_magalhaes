@@ -5,3 +5,10 @@
 
 # Ignorar pasta de backup e todo o seu conteúdo
 backup/
+
+# Arquivos auxiliares do LaTeX
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz

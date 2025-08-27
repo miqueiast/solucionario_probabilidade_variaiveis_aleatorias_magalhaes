@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  27 AUG 2025 11:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.9)  27 AUG 2025 11:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -264,13 +264,13 @@ L3 programming layer <2025-05-26>
 Here is how much of TeX's memory you used:
  2441 strings out of 469873
  36710 string characters out of 5482026
- 443772 words of memory out of 5000000
+ 443761 words of memory out of 5000000
  30747 multiletter control sequences out of 15000+600000
  636272 words of font info for 76 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  57i,11n,65p,632b,224s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/Users/miqueias.silva/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on secao_3.2.pdf (19 pages, 215003 bytes).
+Output written on secao_3.2.pdf (19 pages, 214170 bytes).
 PDF statistics:
  141 PDF objects out of 1000 (max. 8388607)
  90 compressed objects within 1 object stream
