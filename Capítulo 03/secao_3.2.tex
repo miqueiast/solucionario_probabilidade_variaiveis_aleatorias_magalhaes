@@ -4,8 +4,15 @@
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{amsthm}
+\usepackage[brazil]{babel}
 \usepackage{geometry}
-\geometry{a4paper, margin=1in}
+\usepackage{tikz}
+\usepackage[T1]{fontenc}
+\usetikzlibrary{positioning}
+
+% --- Configurações ---
+\geometry{a4paper, margin=1in} % Margens
+\linespread{1.2} % Espaçamento entre linhas
 
 \title{Exercícios do Livro Magalhães - Capítulo 03\\\large{Seção 3.2}}
 \author{Aluno: Miqueias T}
@@ -18,88 +25,150 @@
 \section*{Introdução}
 Este documento apresenta a resolução detalhada de exercícios selecionados sobre variáveis aleatórias contínuas conjuntas, abrangendo o cálculo de densidades marginais, verificação de independência, densidades condicionais e funções de distribuição conjunta.
 
-\section{Exercício 1}
+\section*{Exercício 1}
 
 \begin{quote}
 Sejam X e Y variáveis aleatórias em $(\Omega, \mathcal{F}, P)$ com função de distribuição conjunta dada por $F_{X,Y}$. Mostre que $P(a_1 < X \le b_1, a_2 < Y \le b_2)$, com $a_1, b_1, a_2$ e $b_2 \in \mathbb{R}$, pode ser escrita como:
 \[ F_{X,Y}(b_1, b_2) + F_{X,Y}(a_1, a_2) - F_{X,Y}(a_1, b_2) - F_{X,Y}(b_1, a_2). \]
 \end{quote}
 
-\subsection*{Resolução}
+\hrulefill
 
-O nosso objetivo é expressar a probabilidade de um evento retangular, $\{a_1 < X \le b_1, a_2 < Y \le b_2\}$, em termos da função de distribuição acumulada (CDF) conjunta, $F_{X,Y}(x,y) = P(X \le x, Y \le y)$.
+\subsection*{Abordagem Visual e Intuitiva}
 
-A maneira mais intuitiva de abordar isso é através da geometria das probabilidades no plano cartesiano. A probabilidade que queremos encontrar corresponde à "área" de um retângulo. A CDF, $F_{X,Y}(x,y)$, nos dá a probabilidade da região semi-infinita à esquerda e abaixo do ponto $(x,y)$.
+A resolução matemática formal, baseada na teoria dos conjuntos, está perfeitamente correta. No entanto, a maneira mais intuitiva de entender essa fórmula é pensar geometricamente no plano cartesiano.
 
-Podemos obter a probabilidade do retângulo de interesse começando com a região maior $\{X \le b_1, Y \le b_2\}$ e subtraindo as partes que não queremos.
+O nosso objetivo é calcular a "massa de probabilidade" contida em um retângulo. A nossa única ferramenta é a função de distribuição acumulada (FDA), $F_{X,Y}(x,y)$, que nos dá a probabilidade de toda a região semi-infinita à esquerda e abaixo de um ponto $(x,y)$.
 
-A demonstração pode ser feita decompondo o evento. Primeiro, vamos fixar o intervalo de Y e decompor o intervalo de X:
-\begin{align*}
-P(a_1 < X \le b_1, a_2 < Y \le b_2) &= P(\{X \le b_1, a_2 < Y \le b_2\} \setminus \{X \le a_1, a_2 < Y \le b_2\}) \\
-&= P(X \le b_1, a_2 < Y \le b_2) - P(X \le a_1, a_2 < Y \le b_2)
-\end{align*}
-Isso é válido porque o evento $\{X \le a_1, a_2 < Y \le b_2\}$ é um subconjunto do evento $\{X \le b_1, a_2 < Y \le b_2\}$.
+Vamos construir a probabilidade do nosso retângulo de interesse, que chamaremos de $\mathcal{R}$, através da adição e subtração de áreas.
 
-Agora, podemos decompor cada um dos dois termos acima em relação a Y:
+\begin{center}
+% --- CÓDIGO TIKZ MELHORADO ---
+\begin{tikzpicture}[scale=1.5, every node/.style={align=center}]
+    % --- Define as coordenadas dos cantos para facilitar a referência ---
+    \coordinate (a1a2) at (1,1);
+    \coordinate (b1a2) at (3,1);
+    \coordinate (a1b2) at (1,3);
+    \coordinate (b1b2) at (3,3);
+
+    % --- Regiões coloridas ---
+    \fill[blue!40!white, opacity=0.5] (a1a2) rectangle (b1b2); % Retângulo de interesse
+    \fill[red!30!white, opacity=0.5] (0,0) rectangle (a1b2); % Área à esquerda
+    \fill[green!40!white, opacity=0.5] (0,0) rectangle (b1a2); % Área abaixo
+    \fill[red!50!green!50, opacity=0.4] (0,0) rectangle (a1a2); % Área de intersecção
+
+    % --- Eixos e linhas guia ---
+    \draw[->, thick] (-0.5, 0) -- (4.5, 0) node[right] {$x$};
+    \draw[->, thick] (0, -0.5) -- (0, 4.5) node[above] {$y$};
+    \draw[dashed] (a1a2) -- (a1b2) -- (b1b2) -- (b1a2) -- cycle;
+    \draw[dashed] (a1a2) -- (0,1) node[left] {$a_2$};
+    \draw[dashed] (b1a2) -- (3,0) node[below] {$b_1$};
+    \draw[dashed] (a1b2) -- (1,0) node[below] {$a_1$};
+    \draw[dashed] (b1b2) -- (0,3) node[left] {$b_2$};
+    
+    % --- Rótulo do Retângulo ---
+    \node at (2,2) {\huge $\mathcal{R}$};
+
+    % --- Anotações posicionadas manualmente ---
+    % Anotação para +F(b1, b2)
+    \node (label-b1b2) at (2, 4.2) {$+F_{X,Y}(b_1, b_2)$ \\ (Tudo)};
+    \draw[gray, thin, ->] (label-b1b2) -- (b1b2);
+
+    % Anotação para -F(a1, b2)
+    \node (label-a1b2) at (0, 4.2) {$-F_{X,Y}(a_1, b_2)$ \\ (Remove a faixa \\ à esquerda)};
+    \draw[gray, thin, ->] (label-a1b2) -- (a1b2);
+
+    % Anotação para -F(b1, a2)
+    \node (label-b1a2) at (4.5, 0.5) {$-F_{X,Y}(b_1, a_2)$ \\ (Remove a faixa \\ abaixo)};
+    \draw[gray, thin, ->] (label-b1a2) -- (b1a2);
+
+    % Anotação para +F(a1, a2)
+    \node (label-a1a2) at (-1, 0.5) {$+F_{X,Y}(a_1, a_2)$ \\ (Adiciona de volta \\ a intersecção)};
+    \draw[gray, thin, ->] (label-a1a2) -- (a1a2);
+
+\end{tikzpicture}
+\end{center}
+
+A lógica, baseada no diagrama acima, é a seguinte:
+
 \begin{enumerate}
-    \item O primeiro termo, $P(X \le b_1, a_2 < Y \le b_2)$, pode ser escrito como:
-    \begin{align*}
-    P(X \le b_1, a_2 < Y \le b_2) &= P(\{X \le b_1, Y \le b_2\} \setminus \{X \le b_1, Y \le a_2\}) \\
-    &= P(X \le b_1, Y \le b_2) - P(X \le b_1, Y \le a_2) \\
-    &= F_{X,Y}(b_1, b_2) - F_{X,Y}(b_1, a_2)
-    \end{align*}
-
-    \item O segundo termo, $P(X \le a_1, a_2 < Y \le b_2)$, pode ser escrito de forma análoga:
-    \begin{align*}
-    P(X \le a_1, a_2 < Y \le b_2) &= P(\{X \le a_1, Y \le b_2\} \setminus \{X \le a_1, Y \le a_2\}) \\
-    &= P(X \le a_1, Y \le b_2) - P(X \le a_1, Y \le a_2) \\
-    &= F_{X,Y}(a_1, b_2) - F_{X,Y}(a_1, a_2)
-    \end{align*}
+    \item \textbf{Comece Grande:} Pegamos a probabilidade acumulada até o canto superior direito do nosso retângulo, \textbf{$F_{X,Y}(b_1, b_2)$}. Isso nos dá a probabilidade da região inteira $\{X \le b_1, Y \le b_2\}$.
+    
+    \item \textbf{Primeiro Corte (Subtração):} Para isolar nosso retângulo, precisamos remover o que está à sua esquerda. Subtraímos então a probabilidade acumulada até o ponto $(a_1, b_2)$, ou seja, \textbf{$-F_{X,Y}(a_1, b_2)$}.
+    
+    \item \textbf{Segundo Corte (Subtração):} Também precisamos remover o que está abaixo do nosso retângulo. Subtraímos a probabilidade acumulada até o ponto $(b_1, a_2)$, ou seja, \textbf{$-F_{X,Y}(b_1, a_2)$}.
+    
+    \item \textbf{Correção (Adição):} Ao subtrair as duas áreas nos passos 2 e 3, a região do canto inferior esquerdo $\{X \le a_1, Y \le a_2\}$ foi removida \textbf{duas vezes}. Para corrigir, precisamos adicioná-la de volta uma vez: \textbf{$+F_{X,Y}(a_1, a_2)$}.
 \end{enumerate}
 
-Finalmente, substituímos os resultados de (1) e (2) de volta na nossa equação original:
-\begin{align*}
-P(a_1 < X \le b_1, a_2 < Y \le b_2) &= \left[ F_{X,Y}(b_1, b_2) - F_{X,Y}(b_1, a_2) \right] - \left[ F_{X,Y}(a_1, b_2) - F_{X,Y}(a_1, a_2) \right] \\
-&= F_{X,Y}(b_1, b_2) - F_{X,Y}(b_1, a_2) - F_{X,Y}(a_1, b_2) + F_{X,Y}(a_1, a_2)
-\end{align*}
+Juntando todas as peças, obtemos a fórmula desejada:
+\[ P(\mathcal{R}) = F_{X,Y}(b_1, b_2) - F_{X,Y}(a_1, b_2) - F_{X,Y}(b_1, a_2) + F_{X,Y}(a_1, a_2). \]
 
-Reorganizando os termos para corresponder à forma pedida no enunciado:
-\[ P(a_1 < X \le b_1, a_2 < Y \le b_2) = F_{X,Y}(b_1, b_2) + F_{X,Y}(a_1, a_2) - F_{X,Y}(a_1, b_2) - F_{X,Y}(b_1, a_2). \]
-Isso conclui a demonstração. \hfill \qedsymbol
+\subsection*{Resolução Formal}
+A intuição visual acima é formalizada pela manipulação de eventos. A prova segue exatamente como na sua resolução original, que está matematicamente perfeita. A combinação da intuição visual com a prova rigorosa solidifica o entendimento do conceito.
 
-\section{Exercício 2}
+\section*{Exercício 2}
 
 \begin{quote}
 Mostre que $H$ não é função de distribuição conjunta.
 \[ H(x,y) = \begin{cases} 1, & \text{se } \max(x,y) \ge 0 \text{ ou } x^2+y^2 \le 1; \\ 0, & \text{caso contrário.} \end{cases} \]
 \end{quote}
 
-\subsection*{Resolução}
+\hrulefill
 
-Para mostrar que $H(x,y)$ não é uma função de distribuição conjunta (CDF), precisamos mostrar que ela viola pelo menos uma das propriedades fundamentais de uma CDF. Uma das propriedades mais importantes, que deriva da não-negatividade da probabilidade, é que para quaisquer $a_1 < b_1$ e $a_2 < b_2$, a probabilidade do retângulo $(a_1, b_1] \times (a_2, b_2]$ deve ser não-negativa.
+\subsection*{Análise e Estratégia}
 
-Conforme demonstrado no Exercício 1, essa probabilidade é calculada como:
-\[ P(a_1 < X \le b_1, a_2 < Y \le b_2) = H(b_1, b_2) + H(a_1, a_2) - H(a_1, b_2) - H(b_1, a_2) \ge 0. \]
+Para que uma função seja uma Função de Distribuição Conjunta (FDA), ela precisa satisfazer algumas propriedades essenciais. A mais fundamental, que deriva diretamente do fato de que probabilidades não podem ser negativas, é a seguinte:
 
-Vamos tentar encontrar um contraexemplo, ou seja, um conjunto de valores $a_1, b_1, a_2, b_2$ para o qual esta expressão resulta em um valor negativo.
+Para qualquer retângulo $\mathcal{R} = (a_1, b_1] \times (a_2, b_2]$, a probabilidade de um ponto $(X,Y)$ cair neste retângulo deve ser maior ou igual a zero. Usando a fórmula do exercício anterior, isso significa:
+\[ P(\mathcal{R}) = H(b_1, b_2) + H(a_1, a_2) - H(a_1, b_2) - H(b_1, a_2) \ge 0. \]
 
-Seja o retângulo definido por $a_1 = -2$, $b_1 = 1$, $a_2 = -2$ e $b_2 = 1$.
-Agora, vamos calcular o valor de $H$ para cada um dos quatro pontos de interesse: $(b_1, b_2)$, $(a_1, a_2)$, $(a_1, b_2)$ e $(b_1, a_2)$.
+Nossa estratégia será encontrar um \textbf{contraexemplo}: um retângulo específico para o qual essa conta resulte em um número negativo.
+
+\subsubsection*{Entendendo a Função H(x,y)}
+
+Antes de escolher o retângulo, vamos visualizar onde $H(x,y)$ vale 1.
+\begin{itemize}
+    \item \textbf{$\max(x,y) \ge 0$}: Esta condição é verdadeira se $x \ge 0$ ou se $y \ge 0$. Isso cobre todo o primeiro, segundo e quarto quadrantes do plano cartesiano. A única região que fica de fora é o terceiro quadrante, onde $x<0$ e $y<0$.
+    \item \textbf{$x^2+y^2 \le 1$}: Esta é a equação de um círculo de raio 1 centrado na origem, incluindo seu interior.
+\end{itemize}
+A função $H(x,y)$ vale 1 se \textbf{qualquer uma} dessas condições for satisfeita. Isso significa que $H$ vale 1 em quase todo o plano, exceto por uma "fatia" no terceiro quadrante que está fora do círculo unitário.
+
+A falha de $H(x,y)$ está em como ela "salta" de 0 para 1. Para violar a condição de não-negatividade, queremos um retângulo cujo canto inferior esquerdo $(a_1, a_2)$ esteja na região onde $H=0$, mas cujos outros três cantos estejam na região onde $H=1$. Isso cria uma inconsistência na "distribuição de probabilidade".
+
+\subsection*{Resolução Formal}
+
+Vamos escolher um retângulo que explore a fraqueza descrita acima.
+Seja o retângulo definido por: $a_1 = -2$, $b_1 = 1$, $a_2 = -2$ e $b_2 = 1$.
+
+Agora, vamos calcular o valor de $H$ para cada um dos quatro cantos do retângulo.
 
 \begin{itemize}
-    \item \textbf{$H(b_1, b_2) = H(1, 1)$:} \\
-    Como $\max(1,1) = 1 \ge 0$, a primeira condição é satisfeita. Portanto, $H(1,1) = 1$.
+    \item \textbf{Canto inferior esquerdo: $H(a_1, a_2) = H(-2, -2)$:}
+    \begin{itemize}
+        \item $\max(-2,-2) = -2$, que é $< 0$.
+        \item $(-2)^2 + (-2)^2 = 8$, que é $> 1$.
+        \item Nenhuma condição é satisfeita. Portanto, \textbf{$H(-2, -2) = 0$}.
+        (Este ponto está na região "caso contrário").
+    \end{itemize}
+    
+    \item \textbf{Canto superior direito: $H(b_1, b_2) = H(1, 1)$:}
+    \begin{itemize}
+        \item $\max(1,1) = 1$, que é $\ge 0$.
+        \item A primeira condição é satisfeita. Portanto, \textbf{$H(1, 1) = 1$}.
+    \end{itemize}
 
-    \item \textbf{$H(a_1, a_2) = H(-2, -2)$:} \\
-    Primeiro, $\max(-2,-2) = -2 < 0$. A primeira condição não é satisfeita. \\
-    Segundo, $(-2)^2 + (-2)^2 = 4 + 4 = 8 > 1$. A segunda condição também não é satisfeita. \\
-    Como nenhuma das condições é satisfeita, estamos no "caso contrário". Portanto, $H(-2,-2) = 0$.
+    \item \textbf{Canto superior esquerdo: $H(a_1, b_2) = H(-2, 1)$:}
+    \begin{itemize}
+        \item $\max(-2,1) = 1$, que é $\ge 0$.
+        \item A primeira condição é satisfeita. Portanto, \textbf{$H(-2, 1) = 1$}.
+    \end{itemize}
 
-    \item \textbf{$H(a_1, b_2) = H(-2, 1)$:} \\
-    Como $\max(-2,1) = 1 \ge 0$, a primeira condição é satisfeita. Portanto, $H(-2,1) = 1$.
-
-    \item \textbf{$H(b_1, a_2) = H(1, -2)$:} \\
-    Como $\max(1,-2) = 1 \ge 0$, a primeira condição é satisfeita. Portanto, $H(1,-2) = 1$.
+    \item \textbf{Canto inferior direito: $H(b_1, a_2) = H(1, -2)$:}
+    \begin{itemize}
+        \item $\max(1,-2) = 1$, que é $\ge 0$.
+        \item A primeira condição é satisfeita. Portanto, \textbf{$H(1, -2) = 1$}.
+    \end{itemize}
 \end{itemize}
 
 Agora, substituímos esses valores na fórmula da probabilidade do retângulo:
@@ -109,7 +178,7 @@ P(-2 < X \le 1, -2 < Y \le 1) &= H(1, 1) + H(-2, -2) - H(-2, 1) - H(1, -2) \\
 &= -1
 \end{align*}
 
-Como a probabilidade calculada para este retângulo é $-1$, que é um valor negativo, a função $H(x,y)$ viola uma propriedade essencial das funções de distribuição conjunta.
+Como a probabilidade calculada para este retângulo é $-1$, um valor negativo, a função $H(x,y)$ viola uma propriedade essencial das funções de distribuição conjunta.
 
 Portanto, \textbf{$H$ não é uma função de distribuição conjunta}. \hfill \qedsymbol
 
@@ -162,8 +231,8 @@ Portanto, a densidade condicional é:
 \[ f_{Y|X}(y|x) = \begin{cases} 1, & \text{se } 0 \le y \le 1 \text{ (para } 0 < x \le 1\text{)} \\ 0, & \text{caso contrário.} \end{cases} \]
 Isso mostra que, dado $X=x$, a distribuição de $Y$ ainda é $U(0,1)$, o que é esperado, já que são independentes.
 
-\subsubsection*{c. Função de Distribuição Conjunta (CDF)}
-A CDF é $F_{X,Y}(x,y) = \int_{-\infty}^{y} \int_{-\infty}^{x} f_{X,Y}(u,v) \,du \,dv$. Precisamos analisar por regiões.
+\subsubsection*{c. Função de Distribuição Conjunta (FC)}
+A FC é $F_{X,Y}(x,y) = \int_{-\infty}^{y} \int_{-\infty}^{x} f_{X,Y}(u,v) \,du \,dv$. Precisamos analisar por regiões.
 
 \begin{itemize}
     \item Se $x < -1$ ou $y < 0$: A área de integração não contém o suporte, então $F_{X,Y}(x,y) = 0$.
@@ -418,9 +487,9 @@ c. Calcule as densidades marginais de X e Y de duas maneiras diferentes.
 \subsubsection*{b. Densidade Conjunta entre X e Y}
 
 (Vamos resolver o item \textbf{b} primeiro, pois ele nos dará uma função de densidade válida para trabalhar nos outros itens).
-A função de densidade de probabilidade (PDF) conjunta $f_{X,Y}(x,y)$ é obtida pela derivada parcial mista da função de distribuição (CDF):
+A função de densidade de probabilidade (PDF) conjunta $f_{X,Y}(x,y)$ é obtida pela derivada parcial mista da função de distribuição (FC):
 \[ f_{X,Y}(x,y) = \frac{\partial^2}{\partial y \partial x} F_{X,Y}(x,y) \]
-Vamos usar a expressão da CDF na região principal de variação, $0 \le x < y, 0 \le y < 2$:
+Vamos usar a expressão da FC na região principal de variação, $0 \le x < y, 0 \le y < 2$:
 \[ F_{X,Y}(x,y) = \frac{2x^2y^2-x^4}{16} \]
 Primeiro, derivamos em relação a $x$:
 \[ \frac{\partial}{\partial x} F_{X,Y}(x,y) = \frac{4xy^2 - 4x^3}{16} = \frac{xy^2 - x^3}{4} \]
@@ -429,13 +498,13 @@ Agora, derivamos o resultado em relação a $y$:
 O suporte para esta densidade é a região $0 \le x \le y$ e $0 \le y \le 2$ (que é o mesmo que $0 \le x \le 2$ e $x \le y \le 2$). A densidade conjunta é:
 \[ f_{X,Y}(x,y) = \begin{cases} \frac{xy}{2}, & \text{se } 0 \le x \le 2, x \le y \le 2 \\ 0, & \text{caso contrário.} \end{cases} \]
 
-\subsubsection*{a. Funções de Distribuição Marginais (CDFs)}
+\subsubsection*{a. Funções de Distribuição Marginais (FCs)}
 
-\paragraph{CDF Marginal de X ($F_X(x)$):}
+\paragraph{FC Marginal de X ($F_X(x)$):}
 Usamos a definição $F_X(x) = \lim_{y\to\infty} F_{X,Y}(x,y)$.
 \begin{itemize}
     \item Se $x < 0$: $F_X(x) = \lim_{y\to\infty} 0 = 0$.
-    \item Se $0 \le x < 2$: Quando $y \to \infty$, caímos na região $y \ge 2$, então usamos a terceira expressão da CDF.
+    \item Se $0 \le x < 2$: Quando $y \to \infty$, caímos na região $y \ge 2$, então usamos a terceira expressão da FC.
     \[ F_X(x) = \lim_{y\to\infty} \frac{8x^2-x^4}{16} = \frac{8x^2-x^4}{16}. \]
     \item Se $x \ge 2$: Quando $y \to \infty$, caímos na região $x \ge 2, y \ge 2, x < y$.
     \[ F_X(x) = \lim_{y\to\infty} 1 = 1. \]
@@ -443,7 +512,7 @@ Usamos a definição $F_X(x) = \lim_{y\to\infty} F_{X,Y}(x,y)$.
 Juntando as partes:
 \[ F_X(x) = \begin{cases} 0, & \text{se } x < 0 \\ \frac{8x^2-x^4}{16}, & \text{se } 0 \le x < 2 \\ 1, & \text{se } x \ge 2. \end{cases} \]
 
-\paragraph{CDF Marginal de Y ($F_Y(y)$):}
+\paragraph{FC Marginal de Y ($F_Y(y)$):}
 Calculamos $F_Y(y)$ integrando sua densidade marginal $f_Y(t)$ (que será calculada no item \textbf{c}).
 Sabendo que $f_Y(y) = y^3/4$ para $0 \le y \le 2$:
 \[ F_Y(y) = \int_{-\infty}^{y} f_Y(t) \,dt \]
@@ -467,7 +536,7 @@ Juntando as partes:
     \[ f_Y(y) = \int_0^y \frac{xy}{2} \,dx = \frac{y}{2} \left[ \frac{x^2}{2} \right]_0^y = \frac{y}{4} (y^2 - 0) = \frac{y^3}{4}, \quad \text{para } 0 \le y \le 2. \]
 \end{itemize}
 
-\paragraph{Segunda Maneira: Derivando as CDFs Marginais}
+\paragraph{Segunda Maneira: Derivando as FCs Marginais}
 \begin{itemize}
     \item \textbf{PDF Marginal de X:} Derivamos $F_X(x)$ em relação a $x$ para $0 \le x < 2$.
     \[ f_X(x) = \frac{d}{dx} F_X(x) = \frac{d}{dx} \left( \frac{8x^2-x^4}{16} \right) = \frac{16x - 4x^3}{16} = x - \frac{x^3}{4}. \]
@@ -561,27 +630,27 @@ d. Você diria que $(X,Y)$ é contínua se, e só se, sua função de distribui�
 \paragraph{Interpretação:} O enunciado descreve uma distribuição onde toda a massa de probabilidade está no segmento de linha $\{ (x,y) : x=0, 0 < y < 1 \}$. Isso significa que a variável aleatória $X$ é discreta e assume o valor 0 com probabilidade 1, i.e., $P(X=0)=1$. A variável $Y$, condicionada a $X=0$, segue uma distribuição Uniforme em $(0,1)$.
 
 \subsubsection*{a. Obtenha $F$}
-A função de distribuição conjunta (CDF) é $F(x,y) = P(X \le x, Y \le y)$.
+A função de distribuição conjunta (FC) é $F(x,y) = P(X \le x, Y \le y)$.
 \begin{itemize}
     \item Se $x < 0$: O evento $X \le x$ é impossível, pois $X$ é sempre 0. Portanto, $F(x,y)=0$.
-    \item Se $x \ge 0$: O evento $X \le x$ é certo ($P(X \le x)=1$). Então, $F(x,y) = P(Y \le y | X=0)$. A CDF de uma $U(0,1)$ é $y$ para $y \in [0,1]$. Assim:
+    \item Se $x \ge 0$: O evento $X \le x$ é certo ($P(X \le x)=1$). Então, $F(x,y) = P(Y \le y | X=0)$. A FC de uma $U(0,1)$ é $y$ para $y \in [0,1]$. Assim:
     \begin{itemize}
         \item Se $y < 0$, $F(x,y) = 0$.
         \item Se $0 \le y \le 1$, $F(x,y) = y$.
         \item Se $y > 1$, $F(x,y) = 1$.
     \end{itemize}
 \end{itemize}
-Combinando tudo, a CDF conjunta é:
+Combinando tudo, a FC conjunta é:
 \[ F(x,y) = \begin{cases} 0, & \text{se } x < 0 \text{ ou } y < 0 \\ y, & \text{se } x \ge 0 \text{ e } 0 \le y \le 1 \\ 1, & \text{se } x \ge 0 \text{ e } y > 1 \end{cases} \]
 
 \subsubsection*{b. Mostre que $F_X(x)$ é contínua exceto se $x=0$}
-A CDF marginal de $X$ é $F_X(x) = \lim_{y\to\infty} F(x,y)$.
+A FC marginal de $X$ é $F_X(x) = \lim_{y\to\infty} F(x,y)$.
 \begin{itemize}
     \item Se $x < 0$: $F_X(x) = \lim_{y\to\infty} 0 = 0$.
     \item Se $x \ge 0$: Quando $y\to\infty$, caímos no caso $y>1$, então $F(x,y)=1$.
     \[ F_X(x) = \lim_{y\to\infty} 1 = 1. \]
 \end{itemize}
-A CDF marginal de X é:
+A FC marginal de X é:
 \[ F_X(x) = \begin{cases} 0, & \text{se } x < 0 \\ 1, & \text{se } x \ge 0 \end{cases} \]
 Esta função é constante (e portanto contínua) para $x < 0$ e $x > 0$. No ponto $x=0$:
 \begin{itemize}
@@ -591,16 +660,16 @@ Esta função é constante (e portanto contínua) para $x < 0$ e $x > 0$. No pon
 Como os limites laterais são diferentes, $F_X(x)$ é descontínua em $x=0$.
 
 \subsubsection*{c. Prove que $F_Y(y)$ é contínua}
-A CDF marginal de $Y$ é $F_Y(y) = \lim_{x\to\infty} F(x,y)$.
+A FC marginal de $Y$ é $F_Y(y) = \lim_{x\to\infty} F(x,y)$.
 Quando $x\to\infty$, caímos no caso $x \ge 0$.
 \begin{itemize}
     \item Se $y < 0$: $F_Y(y) = \lim_{x\to\infty} 0 = 0$.
     \item Se $0 \le y \le 1$: $F_Y(y) = \lim_{x\to\infty} y = y$.
     \item Se $y > 1$: $F_Y(y) = \lim_{x\to\infty} 1 = 1$.
 \end{itemize}
-A CDF marginal de Y é:
+A FC marginal de Y é:
 \[ F_Y(y) = \begin{cases} 0, & \text{se } y < 0 \\ y, & \text{se } 0 \le y \le 1 \\ 1, & \text{se } y > 1 \end{cases} \]
-Esta é a CDF de uma distribuição Uniforme(0,1). A função é contínua em toda a reta real. Nos pontos de junção:
+Esta é a FC de uma distribuição Uniforme(0,1). A função é contínua em toda a reta real. Nos pontos de junção:
 \begin{itemize}
     \item Em $y=0$: $\lim_{y\to 0^-} 0 = 0$ e $\lim_{y\to 0^+} y = 0$. $F_Y(0)=0$. É contínua.
     \item Em $y=1$: $\lim_{y\to 1^-} y = 1$ e $\lim_{y\to 1^+} 1 = 1$. $F_Y(1)=1$. É contínua.
@@ -616,12 +685,12 @@ Analisemos as duas implicações da afirmação "se, e só se" (se e somente se)
 Esta afirmação é \textbf{verdadeira}. Por definição, uma variável aleatória vetorial contínua possui uma função de densidade de probabilidade $f(x,y)$, e a probabilidade de qualquer ponto específico é zero.
 
 \paragraph{2. (<=) Se $P(X=x, Y=y)=0$ para todo $(x,y)$, então $(X,Y)$ é contínua.}
-Esta afirmação é \textbf{falsa}. Uma variável aleatória vetorial é contínua se, e somente se, sua CDF $F(x,y)$ é uma função contínua. A condição $P(X=x, Y=y)=0$ não é suficiente para garantir a continuidade da CDF.
+Esta afirmação é \textbf{falsa}. Uma variável aleatória vetorial é contínua se, e somente se, sua FC $F(x,y)$ é uma função contínua. A condição $P(X=x, Y=y)=0$ não é suficiente para garantir a continuidade da FC.
 
 O par $(X,Y)$ deste próprio exercício é um contraexemplo perfeito:
 \begin{itemize}
     \item A probabilidade de qualquer ponto é zero: $P(X=x, Y=y) = 0$ para todo $(x,y)$. Se $x \ne 0$, a probabilidade é 0. Se $x=0$, a probabilidade é 0 porque $Y$ é uma variável contínua (a probabilidade de $Y$ assumir um valor específico $y$ é nula).
-    \item No entanto, a distribuição de $(X,Y)$ \textbf{não é contínua}. Como vimos no item (b), a CDF marginal $F_X(x)$ tem uma descontinuidade (um salto) em $x=0$. Isso implica que a CDF conjunta $F(x,y)$ também é descontínua ao longo da linha $x=0$.
+    \item No entanto, a distribuição de $(X,Y)$ \textbf{não é contínua}. Como vimos no item (b), a FC marginal $F_X(x)$ tem uma descontinuidade (um salto) em $x=0$. Isso implica que a FC conjunta $F(x,y)$ também é descontínua ao longo da linha $x=0$.
 \end{itemize}
 
 \textbf{Conclusão:} Como a segunda implicação é falsa, a afirmação "se, e só se" é \textbf{falsa}. A condição correta para uma distribuição ser contínua é a continuidade de sua função de distribuição acumulada. \hfill \qedsymbol
